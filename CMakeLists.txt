@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(EXECUTABLE_OUTPUT_PATH exe)
 set(MAIN_SOURCE
         ${CMAKE_SOURCE_DIR}/src/main.cpp
+        ${CMAKE_SOURCE_DIR}/src/descriptor/ImageDescriptor.h ${CMAKE_SOURCE_DIR}/src/descriptor/ImageDescriptor.cpp
 )
 
 find_package(OpenCV REQUIRED)
