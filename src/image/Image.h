@@ -52,9 +52,14 @@ class Image {
         void show() const;
 
         /**
-        * \brief Create the histogram of each color channel
-        */
+         * \brief Create the histogram of each color channel
+         */
         std::vector<std::vector<int>> histogram();
+
+        /**
+         * \brief Apply by convolution a kernel to the image
+         */
+        void convolution(const cv::Mat &, const int);
 };
 
 #endif //IMAGE_H

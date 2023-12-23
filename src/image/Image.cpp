@@ -74,3 +74,34 @@ std::vector<std::vector<int>> Image::histogram() {
     }
     return hist;
 }
+
+/**
+ * \param kernel a matrix that will be applied to the image
+ * \param mode an integer (1: use opencv's filter2D function)
+ */
+void Image::convolution(const cv::Mat &kernel, const int mode) {
+    int i, j, k, l, x, y;
+    cv::Mat temp;
+    cv::Vec3f sum;
+    if(mode == 1) { // use the opencv filter2D function
+        cv::filter2D(this->_image, this->_image, -1, kernel);
+    }
+    else {
+        temp = this->_image;
+        for(i = 0; i < temp.rows; i++) { // for each line of the image
+            for(j = 0; j < temp.cols; j++) { // for each column of the image
+                sum = cv::Vec3f::all(0); // we initialize the value to 0
+                for(k = 0; k < kernel.rows; k++) { // for each line of the kernel
+                    for(l = 0; l < kernel.cols; l++) { // for each column of the kernel
+                        // the coordinates of the image to consider
+                        x = i + k - std::floor(kernel.rows / 2);
+                        y = j + l - std::floor(kernel.cols / 2);
+                        // update the new value of the (i, j) pixel
+                        sum += kernel.at<int>(k, l) * temp.at<cv::Vec3b>((x < 0 ? 0 : (x > temp.rows ? temp.rows : x)), (y < 0 ? 0 : (y > temp.cols ? temp.cols : y))); // For borders we use the mirror metod
+                    }
+                }
+                this->_image.at<cv::Vec3b>(i, j) = sum / cv::sum(kernel)[0]; // update the image with our new image
+            }
+        }
+    }
+}
