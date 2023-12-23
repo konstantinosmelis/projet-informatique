@@ -11,6 +11,7 @@ class ImageDescriptor {
 
 public:
         // Constructors
+        ImageDescriptor();
         ImageDescriptor(const int, const std::string &, const std::string &, const std::string &, const std::string &, const int);
 
         // Getters

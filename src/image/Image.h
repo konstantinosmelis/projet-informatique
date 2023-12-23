@@ -50,6 +50,11 @@ class Image {
          * \brief Show the image using cv::imshow
          */
         void show() const;
+
+        /**
+        * \brief Create the histogram of each color channel
+        */
+        std::vector<std::vector<int>> histogram();
 };
 
 #endif //IMAGE_H

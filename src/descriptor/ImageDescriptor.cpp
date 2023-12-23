@@ -1,5 +1,10 @@
 #include "ImageDescriptor.h"
 
+#include "../image/Image.h"
+
+ImageDescriptor::ImageDescriptor() {
+}
+
 ImageDescriptor::ImageDescriptor(const int id, const std::string &path, const std::string &title, const std::string &source, const std::string &author, const int weight) {
     this->_id = id;
     this->_path = path;
