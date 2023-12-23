@@ -7,6 +7,7 @@ set(MAIN_SOURCE
         ${CMAKE_SOURCE_DIR}/src/main.cpp
         ${CMAKE_SOURCE_DIR}/src/descriptor/ImageDescriptor.h ${CMAKE_SOURCE_DIR}/src/descriptor/ImageDescriptor.cpp
         ${CMAKE_SOURCE_DIR}/src/image/Image.h ${CMAKE_SOURCE_DIR}/src/image/Image.cpp
+        ${CMAKE_SOURCE_DIR}/src/database/Database.h ${CMAKE_SOURCE_DIR}/src/database/Database.cpp
 )
 
 find_package(OpenCV REQUIRED)
