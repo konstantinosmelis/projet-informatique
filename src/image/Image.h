@@ -59,7 +59,7 @@ class Image {
         /**
          * \brief Apply by convolution a kernel to the image
          */
-        void convolution(const cv::Mat &, const int);
+        void convolution(cv::Mat &, const int);
 };
 
 #endif //IMAGE_H

@@ -79,12 +79,14 @@ std::vector<std::vector<int>> Image::histogram() {
  * \param kernel a matrix that will be applied to the image
  * \param mode an integer (1: use opencv's filter2D function)
  */
-void Image::convolution(const cv::Mat &kernel, const int mode) {
-    int i, j, k, l, x, y;
+void Image::convolution(cv::Mat &kernel, const int mode) {
+    int i, j, k, l, x, y, kerSum;
     cv::Mat temp;
     cv::Vec3f sum;
+    kerSum = cv::sum(kernel)[0];
     if(mode == 1) { // use the opencv filter2D function
-        cv::filter2D(this->_image, this->_image, -1, kernel);
+        kernel.convertTo(kernel, CV_16F);
+        cv::filter2D(this->_image, this->_image, -1, kernel / (kerSum > 0 ? kerSum : 1));
     }
     else {
         temp = this->_image;
@@ -97,10 +99,10 @@ void Image::convolution(const cv::Mat &kernel, const int mode) {
                         x = i + k - std::floor(kernel.rows / 2);
                         y = j + l - std::floor(kernel.cols / 2);
                         // update the new value of the (i, j) pixel
-                        sum += kernel.at<int>(k, l) * temp.at<cv::Vec3b>((x < 0 ? 0 : (x > temp.rows ? temp.rows : x)), (y < 0 ? 0 : (y > temp.cols ? temp.cols : y))); // For borders we use the mirror metod
+                        sum += kernel.at<uint8_t>(k, l) * temp.at<cv::Vec3b>((x < 0 ? 0 : (x > temp.rows ? temp.rows : x)), (y < 0 ? 0 : (y > temp.cols ? temp.cols : y))); // For borders we use the mirror metod
                     }
                 }
-                this->_image.at<cv::Vec3b>(i, j) = sum / cv::sum(kernel)[0]; // update the image with our new image
+                this->_image.at<cv::Vec3b>(i, j) = sum / (kerSum > 0 ? kerSum : 1); // update the image with our new image
             }
         }
     }
