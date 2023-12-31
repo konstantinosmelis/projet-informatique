@@ -60,6 +60,11 @@ class Image {
          * \brief Apply by convolution a kernel to the image
          */
         void convolution(cv::Mat &, const int);
+
+        /**
+         * \brief Calculate the gradient of the grayscale image
+         */
+        cv::Mat gradient();
 };
 
 #endif //IMAGE_H

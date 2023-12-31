@@ -107,3 +107,19 @@ void Image::convolution(cv::Mat &kernel, const int mode) {
         }
     }
 }
+
+/**
+ * \return the gradient image
+ */
+cv::Mat Image::gradient() {
+    cv::Mat grayscale, gradx, grady, grad;
+    // Convert BGR image to grayscale image
+    cv::cvtColor(this->_image, grayscale, cv::COLOR_BGR2GRAY);
+    // Apply Sobel filter
+    cv::Sobel(grayscale, gradx, CV_32F, 1, 0);
+    cv::Sobel(grayscale, grady, CV_32F, 0, 1);
+    // Calculate gradient norm
+    cv::magnitude(gradx, grady, grad);
+    grad.convertTo(grad, CV_8U);
+    return grad;
+}
