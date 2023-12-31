@@ -65,6 +65,11 @@ class Image {
          * \brief Calculate the gradient of the grayscale image
          */
         cv::Mat gradient();
+
+        /**
+         * \brief Enhance the borders of the objects in the grayscale image
+         */
+        void borderEnhancement();
 };
 
 #endif //IMAGE_H

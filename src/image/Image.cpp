@@ -123,3 +123,17 @@ cv::Mat Image::gradient() {
     grad.convertTo(grad, CV_8U);
     return grad;
 }
+
+/**
+ * \note The image is calculated by the following formula:
+ * enhanced = grayscale + (0.8 * gradient)
+ */
+void Image::borderEnhancement() {
+    cv::Mat grayscale, gradient;
+    // Convert image to grayscale
+    cv::cvtColor(this->_image, grayscale, cv::COLOR_BGR2GRAY);
+    // Calculate gradient
+    gradient = this->gradient();
+    // Enhance borders in the image
+    this->_image = grayscale + (.8 * gradient);
+}
