@@ -137,3 +137,107 @@ void Image::borderEnhancement() {
     // Enhance borders in the image
     this->_image = grayscale + (.8 * gradient);
 }
+
+/**
+ * \param kernelSize the size of the matrix that will be applied to the image as kernel
+ */
+void Image::applyMedianFilter(const int kernelSize = 3) {
+    std::vector<cv::Mat> channels;
+    cv::split(this->_image, channels);
+    for(int c = 0; c < this->_image.channels(); c++) {
+        cv::Mat tempImage = channels[c].clone();
+
+        const int padding = kernelSize / 2;
+        const int windowSize = kernelSize * kernelSize;
+        std::vector<unsigned char> windowValues(windowSize);
+
+        for (int i = 0; i < tempImage.rows; ++i) {
+            for (int j = 0; j < tempImage.cols; ++j) {
+                // Remplir le vecteur des valeurs de la fenetre du noyau
+                int index = 0;
+                for (int k = -padding; k <= padding; ++k) {
+                    for (int l = -padding; l <= padding; ++l) {
+                        int ni = std::max(0, std::min(tempImage.rows - 1, i + k));
+                        int nj = std::max(0, std::min(tempImage.cols - 1, j + l));
+                        windowValues[index++] = tempImage.at<unsigned char>(ni, nj);
+                    }
+                }
+                // Trouver la mediane sans tri en utilisant nth_element
+                std::nth_element(windowValues.begin(), windowValues.begin() + windowSize / 2, windowValues.end());
+                // Assigner la mediane au pixel central
+                channels[c].at<unsigned char>(i, j) = windowValues[windowSize / 2];
+            }
+        }
+    }
+    cv::merge(channels, this->_image);
+}
+
+/**
+ * \param iterations maximum number of iterations
+ * \param kernelSize the size of the matrix that will be applied to the image as kernel
+ */
+void Image::applyErosionFilter(const int iterations = 1, const int kernelSize = 3) {
+    std::vector<cv::Mat> channels;
+    cv::split(this->_image, channels);
+
+    const int padding = kernelSize / 2;
+    const int windowSize = kernelSize * kernelSize;
+
+    for(int iter = 0; iter < iterations; ++iter) {
+        for(int c = 0; c < this->_image.channels(); c++) {
+            cv::Mat tempImage = channels[c].clone();
+            for(int i = 0; i < tempImage.rows; ++i) {
+                for(int j = 0; j < tempImage.cols; ++j) {
+                    // Creer une fenetre du noyau
+                    std::vector<unsigned char> windowValues(windowSize);
+                    int index = 0;
+                    for(int k = -padding; k <= padding; ++k) {
+                        for(int l = -padding; l <= padding; ++l) {
+                            int ni = std::max(0, std::min(tempImage.rows - 1, i + k));
+                            int nj = std::max(0, std::min(tempImage.cols - 1, j + l));
+                            windowValues[index++] = tempImage.at<unsigned char>(ni, nj);
+                        }
+                    }
+                    // Appliquer l'erosion en prenant le min du noyau
+                    channels[c].at<unsigned char>(i, j) = *std::min_element(windowValues.begin(), windowValues.end());
+                }
+            }
+        }
+    }
+    cv::merge(channels, this->_image);
+}
+
+/**
+ * \param iterations maximum number of iterations
+ * \param kernelSize the size of the matrix that will be applied to the image as kernel
+ */
+void Image::applyDilationFilter(const int iterations = 1, const int kernelSize = 3) {
+    std::vector<cv::Mat> channels;
+    cv::split(this->_image, channels);
+
+    const int padding = kernelSize / 2;
+    const int windowSize = kernelSize * kernelSize;
+
+    for(int iter = 0; iter < iterations; ++iter) {
+        for(int c = 0; c < this->_image.channels(); c++) {
+            cv::Mat tempImage = channels[c].clone();
+            for(int i = 0; i < tempImage.rows; ++i) {
+                for(int j = 0; j < tempImage.cols; ++j) {
+                    // Creer une fenetre du noyau
+                    std::vector<unsigned char> windowValues(windowSize);
+                    int index = 0;
+                    for(int k = -padding; k <= padding; ++k) {
+                        for(int l = -padding; l <= padding; ++l) {
+                            int ni = std::max(0, std::min(tempImage.rows - 1, i + k));
+                            int nj = std::max(0, std::min(tempImage.cols - 1, j + l));
+                            windowValues[index++] = tempImage.at<unsigned char>(ni, nj);
+                        }
+                    }
+                    // Appliquer l'erosion en prenant le min du noyau
+                    channels[c].at<unsigned char>(i, j) = *std::max_element(windowValues.begin(), windowValues.end());
+                }
+            }
+        }
+    }
+    cv::merge(channels, this->_image);
+}

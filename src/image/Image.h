@@ -70,6 +70,21 @@ class Image {
          * \brief Enhance the borders of the objects in the grayscale image
          */
         void borderEnhancement();
+
+        /**
+         * \brief Apply median filter to image
+         */
+        void applyMedianFilter(const int);
+
+        /**
+         * \brief Erode the image
+         */
+        void applyErosionFilter(const int, const int);
+
+        /**
+         * \brief Dilate the image
+         */
+        void applyDilationFilter(const int, const int);
 };
 
 #endif //IMAGE_H

@@ -1,5 +1,4 @@
 #include "ImageDescriptor.h"
-
 #include "../image/Image.h"
 
 ImageDescriptor::ImageDescriptor() {

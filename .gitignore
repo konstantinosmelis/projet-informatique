@@ -2,3 +2,10 @@
 cmake-build-debug/
 deps/
 lib/
+/bin/
+/obj/
+/x64/
+*.suo
+*.user
+*.vcxproj
+*.vcxproj.filters 
