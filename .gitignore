@@ -5,3 +5,9 @@
 *.user
 *.vcxproj
 *.vcxproj.filters 
+.idea
+cmake-build-debug
+.idea/
+cmake-build-debug/
+deps/
+lib/
