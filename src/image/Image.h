@@ -85,6 +85,11 @@ class Image {
          * \brief Dilate the image
          */
         void applyDilationFilter(const int, const int);
+
+        /**
+         * \brief Segment the image by chosing upper and lower bound parameters
+         */
+        void colorSegmentation(const cv::Scalar& lowerBound, const cv::Scalar& upperBound);
 };
 
 #endif //IMAGE_H
