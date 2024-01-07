@@ -242,16 +242,17 @@ void Image::applyDilationFilter(const int iterations = 1, const int kernelSize =
     cv::merge(channels, this->_image);
 }
 
-
-void Image::colorSegmentation(const cv::Scalar& lowerBound, const cv::Scalar& upperBound) {
-    // ça convertir l'image en espace de couleur HSV
-    cv::Mat hsvImage;
-    cv::cvtColor(this->_image, hsvImage, cv::COLOR_BGR2HSV);
+void Image::colorSegmentation(const cv::Scalar &lowerBound, const cv::Scalar &upperBound) {
+    // Ã§a convertir l'image en espace de niveau de gris
+    cv::Mat grayscale, outputImage;
+    cv::cvtColor(this->_image, grayscale, cv::COLOR_BGR2GRAY);
 
     // appliquer le seuillage pour obtenir le masque
     cv::Mat mask;
-    cv::inRange(hsvImage, lowerBound, upperBound, mask);
+    cv::inRange(grayscale, lowerBound, upperBound, mask);
+    cv::bitwise_not(mask, mask);
 
-    // appliquer le masque à l'image d'origine
-    cv::bitwise_and(this->_image, this->_image, this->_image, mask);
+    // appliquer le masque Ã  l'image d'origine
+    cv::bitwise_and(this->_image, this->_image, outputImage, mask);
+    this->_image = outputImage;
 }
