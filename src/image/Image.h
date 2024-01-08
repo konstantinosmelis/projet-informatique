@@ -90,6 +90,8 @@ class Image {
          * \brief Segment the image by chosing upper and lower bound parameters
          */
         void colorSegmentation(const cv::Scalar& lowerBound, const cv::Scalar& upperBound);
-};
+       //ajouterBruitPS niveau de gris
+        void ajouterBruitPSNDG(Mat& ); 
+}; 
 
 #endif //IMAGE_H

@@ -255,4 +255,30 @@ void Image::colorSegmentation(const cv::Scalar &lowerBound, const cv::Scalar &up
     // appliquer le masque à l'image d'origine
     cv::bitwise_and(this->_image, this->_image, outputImage, mask);
     this->_image = outputImage;
+
+    
+void ajouterBruitPSNDG(Mat& image) {
+    // Obtenir le nombre de lignes et de colonnes de l'image
+    int rows = image.rows;
+    int cols = image.cols;
+
+    
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            // Générer une valeur aléatoire entre 0 et 20
+            int random_value = rand() % 21;
+
+            // Appliquer le bruit poivre et sel
+            if (random_value == 0) {
+                // Poivre (noir)
+                image.at<Vec3b>(i, j) = Vec3b(0, 0, 0);
+            }
+            else if (random_value == 20) {
+                // Sel (blanc)
+                image.at<Vec3b>(i, j) = Vec3b(255, 255, 255);
+            }
+            // Sinon, conservez la valeur du pixel d'origine
+        }
+    }
+}
 }
