@@ -306,4 +306,44 @@ void ajouterBruitPS(Mat& image) {
             }
         }
 }
+Mat AjoutBruitGaussien(const Mat& image, double variance) {
+	std::vector<Mat> canaux;
+	split(image, canaux);
 
+	bool isgrayscale = cv::norm(canaux[0], canaux[1]) == 0 && cv::norm(canaux[0], canaux[1]) == 0;
+	if (isgrayscale) {
+		// Initialiser une image de bruit gaussien avec les mêmes dimensions que l'image d'entrée
+		Mat bruit(image.size(), CV_8UC1);
+
+		// Générer le bruit gaussien
+		randn(bruit, Scalar::all(0), Scalar::all(variance));
+
+		// Ajouter le bruit à chaque canal séparément
+		std::vector<Mat> canaux;
+		split(image, canaux);
+
+		for (int i = 0; i < canaux.size(); ++i) {
+			canaux[i] += bruit;
+		}
+
+		// Fusionner les canaux en une seule image
+		Mat imageBruitee;
+		merge(canaux, imageBruitee);
+
+		// Assurer que les valeurs restent dans la plage [0, 255]
+		normalize(imageBruitee, imageBruitee, 0, 255, NORM_MINMAX, CV_8UC3);
+
+		return imageBruitee;
+	}
+	else {
+		// Initialiser une image de bruit gaussien avec les mêmes dimensions que l'image d'entrée
+		Mat bruit(image.size(), CV_8UC3);
+
+		// Générer le bruit gaussien
+		randn(bruit, Scalar::all(0), Scalar::all(variance));
+		Mat imageBruitee = image + bruit;
+		normalize(imageBruitee, imageBruitee, 0, 255, NORM_MINMAX, CV_8UC3);
+
+		return imageBruitee;
+	}
+}
