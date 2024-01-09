@@ -255,15 +255,20 @@ void Image::colorSegmentation(const cv::Scalar &lowerBound, const cv::Scalar &up
     // appliquer le masque à l'image d'origine
     cv::bitwise_and(this->_image, this->_image, outputImage, mask);
     this->_image = outputImage;
-
+}
     
-void ajouterBruitPSNDG(Mat& image) {
+void ajouterBruitPS(Mat& image) {
     // Obtenir le nombre de lignes et de colonnes de l'image
     int rows = image.rows;
     int cols = image.cols;
+    std::vector<cv::Mat> canaux;
+    cv::split(image, canaux);
+    bool isgrayscale = cv::norm(canaux[0], canaux[1]) == 0 && cv::norm(canaux[1], canaux[2]) == 0;
+
+    if (isgrayscale)
 
     
-    for (int i = 0; i < rows; ++i) {
+     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
             // Générer une valeur aléatoire entre 0 et 20
             int random_value = rand() % 21;
@@ -280,5 +285,25 @@ void ajouterBruitPSNDG(Mat& image) {
             // Sinon, conservez la valeur du pixel d'origine
         }
     }
+    else
+        for (int c = 0; c < image.channels(); ++c) {
+            for (int i = 0; i < rows; ++i) {
+                for (int j = 0; j < cols; ++j) {
+                    // Générer une valeur aléatoire entre 0 et 20
+                    int random_value = rand() % 21;
+
+                    // Appliquer le bruit poivre et sel à chaque canal
+                    if (random_value == 0) {
+                        // Poivre (noir)
+                        image.at<Vec3b>(i, j)[c] = 0;
+                    }
+                    else if (random_value == 20) {
+                        // Sel (blanc)
+                        image.at<Vec3b>(i, j)[c] = 255;
+                    }
+                    // Sinon, conservez la valeur du pixel d'origine
+                }
+            }
+        }
 }
-}
+

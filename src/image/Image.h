@@ -91,7 +91,7 @@ class Image {
          */
         void colorSegmentation(const cv::Scalar& lowerBound, const cv::Scalar& upperBound);
        //ajouterBruitPS niveau de gris
-        void ajouterBruitPSNDG(Mat& ); 
+        void ajouterBruitPS(Mat& ); 
 }; 
 
 #endif //IMAGE_H
