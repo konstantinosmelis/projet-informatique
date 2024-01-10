@@ -11,6 +11,16 @@ class Database {
 
     public:
         /**
+         * \brief Create a database storing all the images
+         */
+        Database();
+
+        /**
+         * \brief Load database using files sotred in a specified directory
+         */
+        void load(std::string &);
+
+        /**
          * \brief Get all the images stored in the database
          */
         std::vector<Image> getImages() const;
