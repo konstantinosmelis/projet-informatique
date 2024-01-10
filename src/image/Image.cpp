@@ -312,7 +312,7 @@ void Image::gaussianNoise(double variance) {
     std::vector<cv::Mat> canaux;
     cv::split(this->_image, canaux);
 
-	bool isgrayscale = cv::norm(canaux[0], canaux[1]) == 0 && cv::norm(canaux[0], canaux[1]) == 0;
+	bool isgrayscale = cv::norm(canaux[0], canaux[1]) == 0 && cv::norm(canaux[0], canaux[2]) == 0;
 	if (isgrayscale) {
 		// Initialiser une image de bruit gaussien avec les mêmes dimensions que l'image d'entrée
 		cv::Mat bruit(this->_image.size(), CV_8UC1);
@@ -320,7 +320,7 @@ void Image::gaussianNoise(double variance) {
 		// Générer le bruit gaussien
 		cv::randn(bruit, cv::Scalar::all(0), cv::Scalar::all(variance));
 
-		for(int i = 0; i < canaux.size(); ++i) {
+		for(int i = 0; i < (int) canaux.size(); ++i) {
 			canaux[i] += bruit;
 		}
 
