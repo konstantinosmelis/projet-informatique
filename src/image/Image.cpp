@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include "Image.h"
 
 /**
@@ -256,94 +257,87 @@ void Image::colorSegmentation(const cv::Scalar &lowerBound, const cv::Scalar &up
     cv::bitwise_and(this->_image, this->_image, outputImage, mask);
     this->_image = outputImage;
 }
-    
-void ajouterBruitPS(Mat& image) {
+
+void Image::saltpepperNoise() {
     // Obtenir le nombre de lignes et de colonnes de l'image
-    int rows = image.rows;
-    int cols = image.cols;
+    int rows = this->_image.rows;
+    int cols = this->_image.cols;
     std::vector<cv::Mat> canaux;
-    cv::split(image, canaux);
+    cv::split(this->_image, canaux);
     bool isgrayscale = cv::norm(canaux[0], canaux[1]) == 0 && cv::norm(canaux[1], canaux[2]) == 0;
+    if (isgrayscale) {
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                // Générer une valeur aléatoire entre 0 et 20
+                int random_value = std::rand() % 21;
 
-    if (isgrayscale)
-
-    
-     for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            // Générer une valeur aléatoire entre 0 et 20
-            int random_value = rand() % 21;
-
-            // Appliquer le bruit poivre et sel
-            if (random_value == 0) {
-                // Poivre (noir)
-                image.at<Vec3b>(i, j) = Vec3b(0, 0, 0);
+                // Appliquer le bruit poivre et sel
+                if (random_value == 0) {
+                    // Poivre (noir)
+                    this->_image.at<cv::Vec3b>(i, j) = cv::Vec3b(0, 0, 0);
+                }
+                else if (random_value == 20) {
+                    // Sel (blanc)
+                    this->_image.at<cv::Vec3b>(i, j) = cv::Vec3b(255, 255, 255);
+                }
+                // Sinon, conservez la valeur du pixel d'origine
             }
-            else if (random_value == 20) {
-                // Sel (blanc)
-                image.at<Vec3b>(i, j) = Vec3b(255, 255, 255);
-            }
-            // Sinon, conservez la valeur du pixel d'origine
         }
     }
-    else
-        for (int c = 0; c < image.channels(); ++c) {
-            for (int i = 0; i < rows; ++i) {
-                for (int j = 0; j < cols; ++j) {
+    else {
+        for(int c = 0; c < this->_image.channels(); ++c) {
+            for(int i = 0; i < rows; ++i) {
+                for(int j = 0; j < cols; ++j) {
                     // Générer une valeur aléatoire entre 0 et 20
-                    int random_value = rand() % 21;
+                    int random_value = std::rand() % 21;
 
                     // Appliquer le bruit poivre et sel à chaque canal
                     if (random_value == 0) {
                         // Poivre (noir)
-                        image.at<Vec3b>(i, j)[c] = 0;
+                        this->_image.at<cv::Vec3b>(i, j)[c] = 0;
                     }
                     else if (random_value == 20) {
                         // Sel (blanc)
-                        image.at<Vec3b>(i, j)[c] = 255;
+                        this->_image.at<cv::Vec3b>(i, j)[c] = 255;
                     }
                     // Sinon, conservez la valeur du pixel d'origine
                 }
             }
         }
+    }
 }
-Mat AjoutBruitGaussien(const Mat& image, double variance) {
-	std::vector<Mat> canaux;
-	split(image, canaux);
+
+void Image::gaussianNoise(double variance) {
+    cv::Mat imageBruitee;
+    std::vector<cv::Mat> canaux;
+    cv::split(this->_image, canaux);
 
 	bool isgrayscale = cv::norm(canaux[0], canaux[1]) == 0 && cv::norm(canaux[0], canaux[1]) == 0;
 	if (isgrayscale) {
 		// Initialiser une image de bruit gaussien avec les mêmes dimensions que l'image d'entrée
-		Mat bruit(image.size(), CV_8UC1);
+		cv::Mat bruit(this->_image.size(), CV_8UC1);
 
 		// Générer le bruit gaussien
-		randn(bruit, Scalar::all(0), Scalar::all(variance));
+		cv::randn(bruit, cv::Scalar::all(0), cv::Scalar::all(variance));
 
-		// Ajouter le bruit à chaque canal séparément
-		std::vector<Mat> canaux;
-		split(image, canaux);
-
-		for (int i = 0; i < canaux.size(); ++i) {
+		for(int i = 0; i < canaux.size(); ++i) {
 			canaux[i] += bruit;
 		}
 
 		// Fusionner les canaux en une seule image
-		Mat imageBruitee;
-		merge(canaux, imageBruitee);
+		cv::merge(canaux, imageBruitee);
 
 		// Assurer que les valeurs restent dans la plage [0, 255]
-		normalize(imageBruitee, imageBruitee, 0, 255, NORM_MINMAX, CV_8UC3);
-
-		return imageBruitee;
+		cv::normalize(imageBruitee, imageBruitee, 0, 255, cv::NORM_MINMAX, CV_8UC3);
 	}
 	else {
 		// Initialiser une image de bruit gaussien avec les mêmes dimensions que l'image d'entrée
-		Mat bruit(image.size(), CV_8UC3);
+		cv::Mat bruit(this->_image.size(), CV_8UC3);
 
 		// Générer le bruit gaussien
-		randn(bruit, Scalar::all(0), Scalar::all(variance));
-		Mat imageBruitee = image + bruit;
-		normalize(imageBruitee, imageBruitee, 0, 255, NORM_MINMAX, CV_8UC3);
-
-		return imageBruitee;
+		randn(bruit, cv::Scalar::all(0), cv::Scalar::all(variance));
+		imageBruitee = this->_image + bruit;
+		cv::normalize(imageBruitee, imageBruitee, 0, 255, cv::NORM_MINMAX, CV_8UC3);
 	}
+    this->_image = imageBruitee;
 }

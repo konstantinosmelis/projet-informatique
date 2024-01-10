@@ -90,10 +90,16 @@ class Image {
          * \brief Segment the image by chosing upper and lower bound parameters
          */
         void colorSegmentation(const cv::Scalar& lowerBound, const cv::Scalar& upperBound);
-       //ajouterBruitPS 
-        void ajouterBruitPS(Mat& ); 
-        //ajout du bruit gaussien 
-        Mat AjoutBruitGaussien(const Mat& , double );
+
+        /**
+         * \brief Add salt pepper noise to the image
+         */
+        void saltpepperNoise();
+
+        /**
+         * \brief Add gaussian noise to the image
+         */
+        void gaussianNoise(double);
 }; 
 
 #endif //IMAGE_H
