@@ -85,6 +85,11 @@ class Image {
          * \brief Dilate the image
          */
         void applyDilationFilter(const int, const int);
+
+        /**
+         * \brief Detect lines into the image
+         */
+        void detectLines(const int, const int, const int);
 };
 
 #endif //IMAGE_H
