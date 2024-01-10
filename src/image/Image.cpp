@@ -77,6 +77,48 @@ std::vector<std::vector<int>> Image::histogram() {
 }
 
 /**
+ * \param histogram a histogram
+ * \return the cumulative histogram
+ */
+std::vector<int> Image::cumulativeHistogram(const std::vector<int> &histogram) {
+    // Calculer l'histogramme cumulé sans normalisation
+    std::vector<int> cumulativeHist((int) histogram.size(), 0);
+    cumulativeHist[0] = histogram[0];
+    for(int i = 1; i < (int) histogram.size(); i++) {
+        cumulativeHist[i] =  cumulativeHist[i - 1] + histogram[i];
+    }
+    return cumulativeHist;
+}
+
+void Image::normalizeHistogram() {
+    std::vector<cv::Mat> channels;
+    cv::split(this->_image, channels);
+    double minValue, maxValue;
+    for(int c = 0; c < this->_image.channels(); c++) {
+        cv::minMaxLoc(channels[c], &minValue, &maxValue);
+        for(int i = 0; i < this->_image.rows; i++)
+            for(int j = 0; j < this->_image.cols; j++)
+                channels[c].at<uchar>(i, j) = static_cast<uchar>((channels[c].at<uchar>(i, j) - minValue) * 255 / (maxValue - minValue));
+    }
+    cv::merge(channels, this->_image);
+}
+
+void Image::equalizeHistogram(const int min, const int max) {
+    std::vector<cv::Mat> channels;
+    cv::split(this->_image, channels);
+    std::vector<std::vector<int>> histogram = this->histogram();
+    for(int c = 0; c < this->_image.channels(); c++) {
+        std::vector<int> cumulativeHist = this->cumulativeHistogram(histogram[c]);
+        for(int i = 0; i < this->_image.rows; i++) {
+            for(int j = 0; j < this->_image.cols; j++) {
+                channels[c].at<uchar>(i, j) = ((max - min) * cumulativeHist[(int) channels[c].at<uchar>(i, j)] / (this->_image.rows * this->_image.cols)) + min;
+            }
+        }
+    }
+    cv::merge(channels, this->_image);
+}
+
+/**
  * \param kernel a matrix that will be applied to the image
  * \param mode an integer (1: use opencv's filter2D function)
  */

@@ -57,6 +57,21 @@ class Image {
         std::vector<std::vector<int>> histogram();
 
         /**
+         * \brief Calculate the cumulative histogram of the given histogram
+         */
+        std::vector<int> cumulativeHistogram(const std::vector<int> &);
+
+        /**
+         * \brief Normalize the histogram of the image
+         */
+        void normalizeHistogram();
+
+        /**
+         * \brief Equalize the histogram of the image
+         */
+        void equalizeHistogram(const int, const int);
+
+        /**
          * \brief Apply by convolution a kernel to the image
          */
         void convolution(cv::Mat &, const int);
