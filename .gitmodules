@@ -1,0 +1,6 @@
+[submodule "deps/opencv"]
+	path = deps/opencv
+	url = git@github.com:opencv/opencv.git
+[submodule "deps/qt6"]
+	path = deps/qt6
+	url = git://code.qt.io/qt/qt5.git
