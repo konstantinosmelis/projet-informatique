@@ -1,6 +1,5 @@
 #include "User.h"
 
-
 User::User(const std::string& userName, const std::string& userPassword, const UserRight& userRights)
 {
 	this->_userName = userName;
@@ -45,5 +44,5 @@ bool User::verifyLogin(const std::string userName, const std::string password) c
 	if (this->_userName == userName && this->_userPassword == password) {
 		return true;
 	}
-	else return false;
+	return false;
 }

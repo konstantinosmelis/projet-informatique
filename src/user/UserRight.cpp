@@ -7,7 +7,7 @@ UserRight::UserRight()
 	this->_canSaveImage = false;
 }
 
-UserRight::UserRight(const bool& canAddImage, const bool& canRemoveImage, const bool& canSaveImage)
+UserRight::UserRight(const bool &canAddImage, const bool &canRemoveImage, const bool &canSaveImage)
 {
 	this->_canAddImage = canAddImage;
 	this->_canRemoveImage = canRemoveImage;

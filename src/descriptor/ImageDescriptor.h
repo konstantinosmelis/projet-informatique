@@ -9,7 +9,7 @@ class ImageDescriptor {
     int _id, _weight;
     std::string _path, _title, _source, _author, _access;
 
-public:
+    public:
         // Constructors
         ImageDescriptor();
         ImageDescriptor(const int, const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, const int);

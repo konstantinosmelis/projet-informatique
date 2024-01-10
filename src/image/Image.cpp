@@ -341,3 +341,24 @@ void Image::gaussianNoise(double variance) {
     }
     this->_image = imageBruitee;
 }
+
+/**
+ * \param threshold the threshold
+ * \param minLineLength the minimum line length
+ * \param maxLineGap the maximum line gap
+ */
+void Image::detectLines(const int threshold, const int minLineLength, const int maxLineGap) {
+    cv::Mat grayscale;
+    cv::cvtColor(this->_image, grayscale, cv::COLOR_BGR2GRAY);
+
+    cv::Mat edges;
+    cv::Canny(grayscale, edges, 50, 150, 3); 
+
+    std::vector<cv::Vec4i> lines;
+    cv::HoughLinesP(edges, lines, 1, CV_PI / 180, threshold, minLineLength, maxLineGap);
+
+    for(size_t i = 0; i < lines.size(); i++) {
+        cv::Vec4i line = lines[i];
+        cv::line(this->_image, cv::Point(line[0], line[1]), cv::Point(line[2], line[3]), cv::Scalar(0, 0, 255), 2); 
+    }
+}
