@@ -4,12 +4,13 @@
 ImageDescriptor::ImageDescriptor() {
 }
 
-ImageDescriptor::ImageDescriptor(const int id, const std::string &path, const std::string &title, const std::string &source, const std::string &author, const int weight) {
+ImageDescriptor::ImageDescriptor(const int id, const std::string &path, const std::string &title, const std::string &source, const std::string &author, const std::string &access, const int weight) {
     this->_id = id;
     this->_path = path;
     this->_title = title;
     this->_source = source;
     this->_author = author;
+    this->_access = access;
     this->_weight = weight;
 }
 
@@ -31,6 +32,10 @@ std::string ImageDescriptor::getSource() const {
 
 std::string ImageDescriptor::getAuthor() const {
     return this->_author;
+}
+
+std::string ImageDescriptor::getAccessLevel() const {
+    return this->_access;
 }
 
 int ImageDescriptor::getWeight() const {
@@ -55,6 +60,10 @@ void ImageDescriptor::setSource(const std::string &source) {
 
 void ImageDescriptor::setAuthor(const std::string &author) {
     this->_author = author;
+}
+
+void ImageDescriptor::setAccessLevel(const std::string &access) {
+    this->_access = access;
 }
 
 void ImageDescriptor::setWeight(const int weight) {
