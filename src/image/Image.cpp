@@ -312,32 +312,32 @@ void Image::gaussianNoise(double variance) {
     std::vector<cv::Mat> canaux;
     cv::split(this->_image, canaux);
 
-	bool isgrayscale = cv::norm(canaux[0], canaux[1]) == 0 && cv::norm(canaux[0], canaux[2]) == 0;
-	if (isgrayscale) {
-		// Initialiser une image de bruit gaussien avec les mêmes dimensions que l'image d'entrée
-		cv::Mat bruit(this->_image.size(), CV_8UC1);
+    bool isgrayscale = cv::norm(canaux[0], canaux[1]) == 0 && cv::norm(canaux[0], canaux[2]) == 0;
+    if (isgrayscale) {
+        // Initialiser une image de bruit gaussien avec les mêmes dimensions que l'image d'entrée
+        cv::Mat bruit(this->_image.size(), CV_8UC1);
+
+        // Générer le bruit gaussien
+        cv::randn(bruit, cv::Scalar::all(0), cv::Scalar::all(variance));
+
+        for(int i = 0; i < (int) canaux.size(); ++i) {
+            canaux[i] += bruit;
+        }
+
+        // Fusionner les canaux en une seule image
+        cv::merge(canaux, imageBruitee);
+
+        // Assurer que les valeurs restent dans la plage [0, 255]
+        cv::normalize(imageBruitee, imageBruitee, 0, 255, cv::NORM_MINMAX, CV_8UC3);
+    }
+    else {
+        // Initialiser une image de bruit gaussien avec les mêmes dimensions que l'image d'entrée
+        cv::Mat bruit(this->_image.size(), CV_8UC3);
 
 		// Générer le bruit gaussien
-		cv::randn(bruit, cv::Scalar::all(0), cv::Scalar::all(variance));
-
-		for(int i = 0; i < (int) canaux.size(); ++i) {
-			canaux[i] += bruit;
-		}
-
-		// Fusionner les canaux en une seule image
-		cv::merge(canaux, imageBruitee);
-
-		// Assurer que les valeurs restent dans la plage [0, 255]
-		cv::normalize(imageBruitee, imageBruitee, 0, 255, cv::NORM_MINMAX, CV_8UC3);
-	}
-	else {
-		// Initialiser une image de bruit gaussien avec les mêmes dimensions que l'image d'entrée
-		cv::Mat bruit(this->_image.size(), CV_8UC3);
-
-		// Générer le bruit gaussien
-		randn(bruit, cv::Scalar::all(0), cv::Scalar::all(variance));
-		imageBruitee = this->_image + bruit;
-		cv::normalize(imageBruitee, imageBruitee, 0, 255, cv::NORM_MINMAX, CV_8UC3);
-	}
+        randn(bruit, cv::Scalar::all(0), cv::Scalar::all(variance));
+        imageBruitee = this->_image + bruit;
+        cv::normalize(imageBruitee, imageBruitee, 0, 255, cv::NORM_MINMAX, CV_8UC3);
+    }
     this->_image = imageBruitee;
 }
