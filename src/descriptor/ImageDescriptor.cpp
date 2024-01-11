@@ -14,7 +14,8 @@ ImageDescriptor::ImageDescriptor(const int id, const std::string &path, const st
     this->_access = access;
     this->_weight = weight;
 }
-ImageDescriptor::ImageDescriptor(const std::string& path, const std::string& title, const std::string& source, const std::string& author, const std::string& access, const int weight) {
+
+ImageDescriptor::ImageDescriptor(const std::string &path, const std::string &title, const std::string &source, const std::string &author, const std::string &access, const int weight) {
     this->_path = path;
     this->_title = title;
     this->_source = source;

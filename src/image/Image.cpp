@@ -51,7 +51,7 @@ void Image::save(const std::string &path) const {
     cv::imwrite(path, this->_image); // save the image to a specific path without saving it to the database
     
     // create a new descriptor
-    ImageDescriptor::ImageDescriptor(path, _descriptor.getTitle(), _descriptor.getSource(), _descriptor.getAuthor(), "public", _descriptor.getWeight()).save(path + "_descriptor");
+    ImageDescriptor(path, _descriptor.getTitle(), _descriptor.getSource(), _descriptor.getAuthor(), "public", _descriptor.getWeight()).save(path + "_descriptor");
 }
 
 // pour les test

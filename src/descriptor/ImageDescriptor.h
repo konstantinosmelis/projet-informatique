@@ -13,7 +13,7 @@ class ImageDescriptor {
         // Constructors
         ImageDescriptor();
         ImageDescriptor(const int, const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, const int);
-        ImageDescriptor(const std::string& path, const std::string& title, const std::string& source, const std::string& author, const std::string& access, const int weight);
+        ImageDescriptor(const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, const int);
 
         // Getters
         int getId() const;
