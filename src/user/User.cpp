@@ -1,48 +1,70 @@
+#include <filesystem>
+#include <fstream>
 #include "User.h"
 
-User::User(const std::string& userName, const std::string& userPassword, const UserRight& userRights)
-{
-	this->_userName = userName;
-	this->_userPassword = userPassword;
-	this->_userRights = userRights;
+User::User(const std::string &username, const std::string &password) {
+    this->_username = username;
+    this->_password = password;
 }
 
-std::string User::getUserName() const
-{
-	return this->_userName;
+/**
+ * \return the user's username
+ */
+std::string User::getUsername() const {
+    return this->_username;
 }
 
-std::string User::getUserPassword() const
-{
-	return this->_userPassword;
+/**
+ * \return the user's password
+ */
+std::string User::getPassword() const {
+    return this->_password;
 }
 
-UserRight User::getUserRights() const
-{
-	return this->_userRights;
+/**
+ * \return whether the user is an administrator or not
+ */
+bool User::isAdmin() const {
+    return this->_isAdmin;
 }
 
-
-
-void User::setUserName(const std::string& userName)
-{
-	this->_userName = userName;
+/**
+ * \param username a username
+ */
+void User::setUsername(const std::string &username) {
+    this->_username = username;
 }
 
-void User::setUserPassword(const std::string& userPassword)
-{
-	this->_userPassword = userPassword;
+/**
+ * \param password a password
+ */
+void User::setPassword(const std::string &password) {
+    this->_password = password;
 }
 
-void User::setUserRights(const UserRight userRights)
-{
-	this->_userRights = userRights;
+/**
+ * \param isAdmin whether or not the iuser is going to be an administrator
+ */
+void User::setAdmin(const bool isAdmin) {
+    this->_isAdmin = isAdmin;
 }
 
-bool User::verifyLogin(const std::string userName, const std::string password) const
-{
-	if (this->_userName == userName && this->_userPassword == password) {
-		return true;
-	}
-	return false;
+/**
+ * \param path The directory where user files are stored
+ * \return whether the user can login or not
+ */
+bool User::verifyLogin(const std::string &path) {
+    std::ifstream file;
+    std::string userPath = path + this->_username;
+    std::string password;
+    // Check if the user file exists
+    if(std::filesystem::exists(userPath)) {
+        // If the file exists te user can login with the correct password
+        file.open(userPath);
+        file >> password;
+        file >> this->_isAdmin; // Check if the user is an admin
+        file.close();
+        return this->_password == password; // If passwords match the user can login
+    }
+    return false; // If the file doesn't exist the user doesn't exist either
 }
