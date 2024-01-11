@@ -13,6 +13,7 @@ class ImageDescriptor {
         // Constructors
         ImageDescriptor();
         ImageDescriptor(const int, const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, const int);
+        ImageDescriptor(const std::string& path, const std::string& title, const std::string& source, const std::string& author, const std::string& access, const int weight);
 
         // Getters
         int getId() const;
@@ -31,6 +32,7 @@ class ImageDescriptor {
         void setAuthor(const std::string &);
         void setAccessLevel(const std::string &);
         void setWeight(const int);
+        void save(const std::string&) const;
 };
 
 std::ostream &operator<<(std::ostream &, const ImageDescriptor &);

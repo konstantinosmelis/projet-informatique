@@ -1,11 +1,20 @@
 #include "ImageDescriptor.h"
 #include "../image/Image.h"
+#include <fstream>
 
 ImageDescriptor::ImageDescriptor() {
 }
 
 ImageDescriptor::ImageDescriptor(const int id, const std::string &path, const std::string &title, const std::string &source, const std::string &author, const std::string &access, const int weight) {
     this->_id = id;
+    this->_path = path;
+    this->_title = title;
+    this->_source = source;
+    this->_author = author;
+    this->_access = access;
+    this->_weight = weight;
+}
+ImageDescriptor::ImageDescriptor(const std::string& path, const std::string& title, const std::string& source, const std::string& author, const std::string& access, const int weight) {
     this->_path = path;
     this->_title = title;
     this->_source = source;
@@ -68,6 +77,21 @@ void ImageDescriptor::setAccessLevel(const std::string &access) {
 
 void ImageDescriptor::setWeight(const int weight) {
     this->_weight = weight;
+}
+
+void ImageDescriptor::save(const std::string& path) const
+{
+    std::ofstream outfile;
+    outfile.open(path);
+    outfile << _path << std::endl;
+    outfile << _title << std::endl;
+    outfile << _source << std::endl;
+    outfile << _author << std::endl;
+    outfile << _access << std::endl;
+    outfile << _weight << std::endl;
+    outfile.close();
+
+        
 }
 
 std::ostream &operator<<(std::ostream &stream, const ImageDescriptor &descriptor) {
