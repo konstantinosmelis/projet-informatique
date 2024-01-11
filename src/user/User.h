@@ -2,26 +2,49 @@
 #define USER_H
 
 #include <string>
-#include "UserRight.h"
 
 class User {
 	private:
-		std::string _userName;
-		std::string _userPassword;
-		UserRight _userRights;
+		std::string _username, _password; /** The user's username and password */
+		bool _isAdmin = false; /** The user's role (by default he is not an administrator) */
 
 	public:
-		User(const std::string &, const std::string &, const UserRight &);
+		User(const std::string &, const std::string &);
 
-		std::string getUserName() const;
-		std::string getUserPassword() const;
-		UserRight getUserRights() const;
+		/**
+		 * \brief Get the user's username
+		 */
+		std::string getUsername() const;
 
-		void setUserName(const std::string &);
-		void setUserPassword(const std::string &);
-		void setUserRights(const UserRight);
+		/**
+		 * \brief Get the user's password
+		 */
+		std::string getPassword() const;
 
-		bool verifyLogin(const std::string , const std::string) const;
+		/**
+		 * \brief Check if the user is an administrator
+		 */
+		bool isAdmin() const;
+
+		/**
+		 * \brief Set the user's username
+		 */
+		void setUsername(const std::string &);
+
+		/**
+		 * \brief Set the user's password
+		 */
+		void setPassword(const std::string &);
+
+		/**
+		 * \brief Set administator rights
+		 */
+		void setAdmin(const bool);
+
+		/**
+		 * \brief Check if the user can login to the app
+		 */
+		bool verifyLogin(const std::string &);
 };
 
 #endif //USER_H

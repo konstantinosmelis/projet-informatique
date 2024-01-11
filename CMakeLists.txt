@@ -9,7 +9,6 @@ set(MAIN_SOURCE
         ${CMAKE_SOURCE_DIR}/src/image/Image.h ${CMAKE_SOURCE_DIR}/src/image/Image.cpp
         ${CMAKE_SOURCE_DIR}/src/database/Database.h ${CMAKE_SOURCE_DIR}/src/database/Database.cpp
         ${CMAKE_SOURCE_DIR}/src/user/User.h ${CMAKE_SOURCE_DIR}/src/user/User.cpp
-        ${CMAKE_SOURCE_DIR}/src/user/UserRight.h ${CMAKE_SOURCE_DIR}/src/user/UserRight.cpp
 )
 
 find_package(OpenCV REQUIRED)
