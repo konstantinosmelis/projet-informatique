@@ -1,7 +1,7 @@
 #include "traitementimagewindow.h"
 #include "ui_traitementimagewindow.h"
 #include "secondwindow.h"
-#include "LoginWindow.h"
+#include "login/LoginWindow.h"
 #include <QMessageBox>
 
 TraitementImageWindow::TraitementImageWindow(QWidget *parent)

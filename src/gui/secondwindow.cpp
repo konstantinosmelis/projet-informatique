@@ -2,7 +2,7 @@
 #include "ui_secondwindow.h"
 #include "databasewindow.h"
 #include "traitementimagewindow.h"
-#include "LoginWindow.h"
+#include "login/LoginWindow.h"
 #include <QMessageBox>
 
 SecondWindow::SecondWindow(QWidget *parent)

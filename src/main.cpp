@@ -1,6 +1,6 @@
 #include <iostream>
 #include <QApplication>
-#include "gui/LoginWindow.h"
+#include "gui/login/LoginWindow.h"
 
 int main(int argc, char* argv[]) {
     QApplication a(argc, argv);

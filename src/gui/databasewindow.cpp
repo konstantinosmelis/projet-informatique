@@ -1,6 +1,6 @@
 #include "databasewindow.h"
 #include "ui_databasewindow.h"
-#include "LoginWindow.h"
+#include "login/LoginWindow.h"
 #include "secondwindow.h"
 
 databaseWindow::databaseWindow(QWidget *parent)

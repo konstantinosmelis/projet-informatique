@@ -5,9 +5,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(EXECUTABLE_OUTPUT_PATH exe)
 set(MAIN_SOURCE
         ${CMAKE_SOURCE_DIR}/src/main.cpp
-        ${CMAKE_SOURCE_DIR}/src/gui/LoginWindow.h
-        ${CMAKE_SOURCE_DIR}/src/gui/LoginWindow.cpp
-        ${CMAKE_SOURCE_DIR}/src/gui/loginwindow.ui
+        ${CMAKE_SOURCE_DIR}/src/gui/login/LoginWindow.h
+        ${CMAKE_SOURCE_DIR}/src/gui/login/LoginWindow.cpp
+        ${CMAKE_SOURCE_DIR}/ui/loginwindow.ui
 )
 
 find_package(OpenCV REQUIRED)

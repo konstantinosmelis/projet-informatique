@@ -1,8 +1,8 @@
 #include "LoginWindow.h"
-#include "ui_loginwindow.h"
-#include "secondwindow.h"
+#include "../../../ui/ui_loginwindow.h"
+#include "../secondwindow.h"
 
-#include "../user/User.h"
+#include "../../user/User.h"
 
 LoginWindow::LoginWindow(QWidget *parent)
     : QMainWindow(parent),
