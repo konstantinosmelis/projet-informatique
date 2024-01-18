@@ -2,7 +2,7 @@
 #include "ui_secondwindow.h"
 #include "databasewindow.h"
 #include "traitementimagewindow.h"
-#include "mainwindow.h"
+#include "LoginWindow.h"
 #include <QMessageBox>
 
 SecondWindow::SecondWindow(QWidget *parent)
@@ -56,6 +56,6 @@ void SecondWindow::on_EXITBUTTON_clicked() {
     int ret = msgBox.exec();
 
     SecondWindow::close();
-    MainWindow *login = new MainWindow;
+    LoginWindow *login = new LoginWindow;
     login->show();
 }

@@ -1,29 +1,29 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "LoginWindow.h"
+#include "ui_loginwindow.h"
 #include "secondwindow.h"
 
 #include "../user/User.h"
 
-MainWindow::MainWindow(QWidget *parent)
+LoginWindow::LoginWindow(QWidget *parent)
     : QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::LoginWindow)
 {
     ui->setupUi(this);
 }
 
-MainWindow::MainWindow(const std::string &userPath, QWidget *parent)
+LoginWindow::LoginWindow(const std::string &userPath, QWidget *parent)
     : QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::LoginWindow)
 {
     this->_userPath = userPath;
     ui->setupUi(this);
 }
 
-MainWindow::~MainWindow() {
+LoginWindow::~LoginWindow() {
     delete ui;
 }
 
-void MainWindow::on_loginButton_clicked() {
+void LoginWindow::on_loginButton_clicked() {
     User user(ui->usernameText->toPlainText().toStdString(), ui->passwordText->toPlainText().toStdString());
     if(user.verifyLogin(this->_userPath) && !user.getUsername().empty()) {
         this->hide();

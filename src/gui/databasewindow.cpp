@@ -1,6 +1,6 @@
 #include "databasewindow.h"
 #include "ui_databasewindow.h"
-#include "mainwindow.h"
+#include "LoginWindow.h"
 #include "secondwindow.h"
 
 databaseWindow::databaseWindow(QWidget *parent)
@@ -16,7 +16,7 @@ databaseWindow::~databaseWindow() {
 
 void databaseWindow::on_EXITDB_clicked() {
     databaseWindow::close();
-    MainWindow *login  = new MainWindow;
+    LoginWindow *login  = new LoginWindow;
     login->show();
 }
 

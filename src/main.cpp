@@ -1,10 +1,10 @@
 #include <iostream>
 #include <QApplication>
-#include "gui/mainwindow.h"
+#include "gui/LoginWindow.h"
 
 int main(int argc, char* argv[]) {
     QApplication a(argc, argv);
-    MainWindow w(argv[1]);
+    LoginWindow w(argv[1]);
     w.show();
     std::cout << "Hello world!" << std::endl;
     return QApplication::exec();
