@@ -1,6 +1,6 @@
 #include "secondwindow.h"
 #include "ui_secondwindow.h"
-#include "databasewindow.h"
+#include "database/DatabaseWindow.h"
 #include "traitementimagewindow.h"
 #include "login/LoginWindow.h"
 #include <QMessageBox>
@@ -29,7 +29,7 @@ void SecondWindow::on_LoadImage_clicked() {
 }
 
 void SecondWindow::on_ModifDatabaseButton_clicked() {
-    databaseWindow *DataBaseFenetre = new databaseWindow;
+    DatabaseWindow *DataBaseFenetre = new DatabaseWindow;
     DataBaseFenetre->show();
     SecondWindow::hide();
 }

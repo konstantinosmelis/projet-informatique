@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>databaseWindow</class>
+ <class>DatabaseWindow</class>
  <widget class="QMainWindow" name="databaseWindow">
   <property name="geometry">
    <rect>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Ajout dans la base de données</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox">
@@ -24,9 +24,9 @@
      </rect>
     </property>
     <property name="title">
-     <string>Information sur l'image</string>
+     <string>Informations de l'image</string>
     </property>
-    <widget class="QLabel" name="NomImage">
+    <widget class="QLabel" name="imageNameLabel">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -39,7 +39,7 @@
       <string>Nom de l'image</string>
      </property>
     </widget>
-    <widget class="QLabel" name="PrixImgeEditDB">
+    <widget class="QLabel" name="imageCostLabel">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -49,10 +49,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Prix de l'image </string>
+      <string>Coût de l'image </string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="NomImageEditDB">
+    <widget class="QTextEdit" name="imageNameText">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -62,7 +62,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLabel" name="SourceImageEditDB">
+    <widget class="QLabel" name="imageSourceLabel">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -75,20 +75,7 @@
       <string>Source</string>
      </property>
     </widget>
-    <widget class="QLabel" name="dateDB">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>170</y>
-       <width>63</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Date</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="NAImageEditDB">
+    <widget class="QLabel" name="accessLevelLabel">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -98,10 +85,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Niveau  d'acces</string>
+      <string>Niveau d'accès</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="PrixEdDB">
+    <widget class="QTextEdit" name="imageCostText">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -111,7 +98,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QTextEdit" name="SourceEdDB">
+    <widget class="QTextEdit" name="imageSourceText">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -121,17 +108,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QTextEdit" name="DateEdDB">
-     <property name="geometry">
-      <rect>
-       <x>150</x>
-       <y>160</y>
-       <width>201</width>
-       <height>41</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QTextEdit" name="NiveauDB">
+    <widget class="QTextEdit" name="accessLevelText">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -142,7 +119,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="gestionImage">
+   <widget class="QGroupBox" name="imageGroup">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -152,7 +129,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>Gestion de l'image</string>
+     <string>Charger l'image</string>
     </property>
     <widget class="QPushButton" name="LoadImage">
      <property name="geometry">
@@ -164,7 +141,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Charger l'image </string>
+      <string>Charger</string>
      </property>
     </widget>
     <widget class="QTextEdit" name="textEdit">
@@ -178,7 +155,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QPushButton" name="EXITDB">
+   <widget class="QPushButton" name="exitButton">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -188,10 +165,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>Exit</string>
+     <string>Quitter</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="ReturnDB">
+   <widget class="QPushButton" name="returnButton">
     <property name="geometry">
      <rect>
       <x>170</x>
@@ -204,7 +181,7 @@
      <string>Retour</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="EnregistrerDBpushB">
+   <widget class="QPushButton" name="saveButton">
     <property name="geometry">
      <rect>
       <x>420</x>
@@ -215,19 +192,6 @@
     </property>
     <property name="text">
      <string>Enregistrer</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="SupprimerDBpush">
-    <property name="geometry">
-     <rect>
-      <x>540</x>
-      <y>390</y>
-      <width>93</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Supprimer</string>
     </property>
    </widget>
    <widget class="QGroupBox" name="groupBox_2">
