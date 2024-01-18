@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[]) {
     QApplication a(argc, argv);
-    MainWindow w;
+    MainWindow w(argv[1]);
     w.show();
     std::cout << "Hello world!" << std::endl;
     return QApplication::exec();

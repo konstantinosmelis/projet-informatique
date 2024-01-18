@@ -5,23 +5,23 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class MainWindow;
+    class MainWindow;
 }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
-public:
-    MainWindow(QWidget *parent = nullptr);
+    public:
+        MainWindow(QWidget *parent = nullptr);
+        MainWindow(const std::string &, QWidget *parent = nullptr);
+        ~MainWindow();
 
-    ~MainWindow();
+    private:
+        Ui::MainWindow *ui;
+        std::string _userPath;
 
-
-private:
-    Ui::MainWindow *ui;
-private slots:
-    void on_LoginButton_clicked();
+    private slots:
+        void on_loginButton_clicked();
 };
 #endif // MAINWINDOW_H

@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "../user/User.h"
+
 namespace Ui {
     class SecondWindow;
 }
@@ -12,6 +14,7 @@ class SecondWindow : public QMainWindow {
 
     public:
         explicit SecondWindow(QWidget *parent = nullptr);
+        SecondWindow(const User &, QWidget *parent = nullptr);
         ~SecondWindow();
 
     private slots:
@@ -22,6 +25,7 @@ class SecondWindow : public QMainWindow {
 
     private:
         Ui::SecondWindow *ui;
+        User _user;
 };
 
 #endif // SECONDWINDOW_H

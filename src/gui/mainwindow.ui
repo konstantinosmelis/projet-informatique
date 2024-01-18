@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Login</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(0, 255, 255);</string>
@@ -32,7 +32,20 @@
     <property name="title">
      <string/>
     </property>
-    <widget class="QTextEdit" name="LoginMDPText">
+    <widget class="QTextEdit" name="usernameText">
+     <property name="geometry">
+      <rect>
+       <x>12</x>
+       <y>39</y>
+       <width>256</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="passwordText">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -45,7 +58,7 @@
       <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="LoginButton">
+    <widget class="QPushButton" name="loginButton">
      <property name="geometry">
       <rect>
        <x>80</x>
@@ -59,19 +72,6 @@
      </property>
      <property name="text">
       <string>Login</string>
-     </property>
-    </widget>
-    <widget class="QTextEdit" name="LoginIdentifText">
-     <property name="geometry">
-      <rect>
-       <x>12</x>
-       <y>39</y>
-       <width>256</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
     </widget>
     <widget class="QLabel" name="label">

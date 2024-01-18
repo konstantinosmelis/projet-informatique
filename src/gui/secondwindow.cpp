@@ -12,6 +12,14 @@ SecondWindow::SecondWindow(QWidget *parent)
     ui->setupUi(this);
 }
 
+SecondWindow::SecondWindow(const User &user, QWidget *parent)
+    : QMainWindow(parent),
+    ui(new Ui::SecondWindow)
+{
+    this->_user = user;
+    ui->setupUi(this);
+}
+
 SecondWindow::~SecondWindow() {
     delete ui;
 }
