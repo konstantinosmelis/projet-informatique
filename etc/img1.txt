@@ -1,5 +1,0 @@
-1234
-/home/dinos/Pictures/img_bee_cell/bee/bee5.png
-Test Image
-My filesystem
-2345
