@@ -3,19 +3,19 @@
 
 #include <QMainWindow>
 
-#include "../user/User.h"
+#include "../../user/User.h"
 
 namespace Ui {
-    class SecondWindow;
+    class ListWindow;
 }
 
-class SecondWindow : public QMainWindow {
+class ListWindow : public QMainWindow {
     Q_OBJECT
 
     public:
-        explicit SecondWindow(QWidget *parent = nullptr);
-        SecondWindow(const User &, QWidget *parent = nullptr);
-        ~SecondWindow();
+        explicit ListWindow(QWidget *parent = nullptr);
+        ListWindow(const User &, QWidget *parent = nullptr);
+        ~ListWindow();
 
     private slots:
         void on_LoadImage_clicked();
@@ -24,7 +24,7 @@ class SecondWindow : public QMainWindow {
         void on_EXITBUTTON_clicked();
 
     private:
-        Ui::SecondWindow *ui;
+        Ui::ListWindow *ui;
         User _user;
 };
 

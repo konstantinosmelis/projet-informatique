@@ -1,7 +1,8 @@
 #include "traitementimagewindow.h"
 #include "ui_traitementimagewindow.h"
-#include "secondwindow.h"
+#include "list/ListWindow.h"
 #include "login/LoginWindow.h"
+
 #include <QMessageBox>
 
 TraitementImageWindow::TraitementImageWindow(QWidget *parent)
@@ -17,14 +18,14 @@ TraitementImageWindow::~TraitementImageWindow() {
 }
 
 void TraitementImageWindow::on_EXITtraitement_clicked() {
-    TraitementImageWindow::close();
+    this->close();
     LoginWindow *login = new LoginWindow;
     login->show();
 }
 
 void TraitementImageWindow::on_returnButtonTraitement_clicked() {
-    TraitementImageWindow::close() ;
-    SecondWindow *fenetre = new SecondWindow;
+    this->close() ;
+    ListWindow *fenetre = new ListWindow;
     fenetre->show();
 }
 

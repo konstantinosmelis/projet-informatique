@@ -1,7 +1,7 @@
 #include "DatabaseWindow.h"
 #include "../../../ui/ui_databasewindow.h"
 #include "../login/LoginWindow.h"
-#include "../secondwindow.h"
+#include "../list/ListWindow.h"
 
 DatabaseWindow::DatabaseWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -22,6 +22,6 @@ void DatabaseWindow::on_exitButton_clicked() {
 
 void DatabaseWindow::on_returnButton_clicked() {
     this->close();
-    SecondWindow *fenetre = new SecondWindow;
+    ListWindow *fenetre = new ListWindow;
     fenetre->show();
 }

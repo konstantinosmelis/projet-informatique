@@ -5,9 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(EXECUTABLE_OUTPUT_PATH exe)
 set(MAIN_SOURCE
         ${CMAKE_SOURCE_DIR}/src/main.cpp
-        ${CMAKE_SOURCE_DIR}/src/gui/login/LoginWindow.h
-        ${CMAKE_SOURCE_DIR}/src/gui/login/LoginWindow.cpp
-        ${CMAKE_SOURCE_DIR}/ui/loginwindow.ui
+        ${CMAKE_SOURCE_DIR}/src/gui/login/LoginWindow.h ${CMAKE_SOURCE_DIR}/src/gui/login/LoginWindow.cpp ${CMAKE_SOURCE_DIR}/ui/loginwindow.ui
 )
 
 find_package(OpenCV REQUIRED)
@@ -22,7 +20,7 @@ add_executable(image_processor
         ${CMAKE_SOURCE_DIR}/src/image/Image.h ${CMAKE_SOURCE_DIR}/src/image/Image.cpp
         ${CMAKE_SOURCE_DIR}/src/database/Database.h ${CMAKE_SOURCE_DIR}/src/database/Database.cpp
         ${CMAKE_SOURCE_DIR}/src/user/User.h ${CMAKE_SOURCE_DIR}/src/user/User.cpp
-        ${CMAKE_SOURCE_DIR}/src/gui/secondwindow.h ${CMAKE_SOURCE_DIR}/src/gui/secondwindow.cpp ${CMAKE_SOURCE_DIR}/src/gui/secondwindow.ui
+        ${CMAKE_SOURCE_DIR}/src/gui/list/ListWindow.h ${CMAKE_SOURCE_DIR}/src/gui/list/ListWindow.cpp ${CMAKE_SOURCE_DIR}/ui/listwindow.ui
         ${CMAKE_SOURCE_DIR}/src/gui/database/DatabaseWindow.h ${CMAKE_SOURCE_DIR}/src/gui/database/DatabaseWindow.cpp ${CMAKE_SOURCE_DIR}/ui/databasewindow.ui
         ${CMAKE_SOURCE_DIR}/src/gui/traitementimagewindow.h ${CMAKE_SOURCE_DIR}/src/gui/traitementimagewindow.cpp ${CMAKE_SOURCE_DIR}/src/gui/traitementimagewindow.ui
 )

@@ -1,46 +1,47 @@
-#include "secondwindow.h"
-#include "ui_secondwindow.h"
-#include "database/DatabaseWindow.h"
-#include "traitementimagewindow.h"
-#include "login/LoginWindow.h"
+#include "ListWindow.h"
+#include "../../../ui/ui_listwindow.h"
+#include "../database/DatabaseWindow.h"
+#include "../traitementimagewindow.h"
+#include "../login/LoginWindow.h"
+
 #include <QMessageBox>
 
-SecondWindow::SecondWindow(QWidget *parent)
+ListWindow::ListWindow(QWidget *parent)
     : QMainWindow(parent),
-    ui(new Ui::SecondWindow)
+    ui(new Ui::ListWindow)
 {
     ui->setupUi(this);
 }
 
-SecondWindow::SecondWindow(const User &user, QWidget *parent)
+ListWindow::ListWindow(const User &user, QWidget *parent)
     : QMainWindow(parent),
-    ui(new Ui::SecondWindow)
+    ui(new Ui::ListWindow)
 {
     this->_user = user;
     ui->setupUi(this);
 }
 
-SecondWindow::~SecondWindow() {
+ListWindow::~ListWindow() {
     delete ui;
 }
 
-void SecondWindow::on_LoadImage_clicked() {
+void ListWindow::on_LoadImage_clicked() {
 
 }
 
-void SecondWindow::on_ModifDatabaseButton_clicked() {
+void ListWindow::on_ModifDatabaseButton_clicked() {
     DatabaseWindow *DataBaseFenetre = new DatabaseWindow;
     DataBaseFenetre->show();
-    SecondWindow::hide();
+    this->hide();
 }
 
-void SecondWindow::on_TraitemenButton_clicked() {
+void ListWindow::on_TraitemenButton_clicked() {
     TraitementImageWindow *TraitementFenetre = new TraitementImageWindow;
     TraitementFenetre->show();
-    SecondWindow::hide();
+    this->hide();
 }
 
-void SecondWindow::on_EXITBUTTON_clicked() {
+void ListWindow::on_EXITBUTTON_clicked() {
     // QMessageBox::warnin
     // StandarButton defaultButton = NoButton ;
     // QMessageBox::warning(this,"Attention","Voulez vous vraiment fermer",StandarButtons buttons = annuler);
@@ -55,7 +56,7 @@ void SecondWindow::on_EXITBUTTON_clicked() {
     msgBox.setDefaultButton(QMessageBox::Save);
     int ret = msgBox.exec();
 
-    SecondWindow::close();
+    this->close();
     LoginWindow *login = new LoginWindow;
     login->show();
 }

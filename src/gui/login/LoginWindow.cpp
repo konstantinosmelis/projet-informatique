@@ -1,6 +1,6 @@
 #include "LoginWindow.h"
 #include "../../../ui/ui_loginwindow.h"
-#include "../secondwindow.h"
+#include "../list/ListWindow.h"
 
 #include "../../user/User.h"
 
@@ -27,7 +27,7 @@ void LoginWindow::on_loginButton_clicked() {
     User user(ui->usernameText->toPlainText().toStdString(), ui->passwordText->toPlainText().toStdString());
     if(user.verifyLogin(this->_userPath) && !user.getUsername().empty()) {
         this->hide();
-        SecondWindow *secondFenetre = new SecondWindow(user);
+        ListWindow *secondFenetre = new ListWindow(user);
         secondFenetre->show();
     }
     else {
