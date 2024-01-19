@@ -131,7 +131,7 @@
     <property name="title">
      <string>Charger l'image</string>
     </property>
-    <widget class="QPushButton" name="LoadImage">
+    <widget class="QPushButton" name="loadImageButton">
      <property name="geometry">
       <rect>
        <x>60</x>
@@ -144,7 +144,7 @@
       <string>Charger</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit">
+    <widget class="QTextEdit" name="imagePathText">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -178,10 +178,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>Retour</string>
+     <string>Annuler</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="saveButton">
+   <widget class="QPushButton" name="finishButton">
     <property name="geometry">
      <rect>
       <x>420</x>
@@ -191,7 +191,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Enregistrer</string>
+     <string>Terminer</string>
     </property>
    </widget>
    <widget class="QGroupBox" name="groupBox_2">

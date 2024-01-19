@@ -9,7 +9,7 @@ Database::Database() {
 /**
  * \param directoryName the path to thie directory containing the descriptor files
  */
-void Database::load(std::string &directoryName) {
+void Database::load(const std::string &directoryName) {
     int number_of_images = 0;
     std::filesystem::directory_iterator direcotry;
     std::ifstream file;

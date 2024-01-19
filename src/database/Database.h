@@ -18,7 +18,7 @@ class Database {
         /**
          * \brief Load database using files sotred in a specified directory
          */
-        void load(std::string &);
+        void load(const std::string &);
 
         /**
          * \brief Get all the images stored in the database

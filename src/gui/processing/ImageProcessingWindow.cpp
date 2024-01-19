@@ -26,8 +26,6 @@ void ImageProcessingWindow::on_EXITtraitement_clicked() {
 
 void ImageProcessingWindow::on_returnButtonTraitement_clicked() {
     this->close() ;
-    ListWindow *fenetre = new ListWindow;
-    fenetre->show();
 }
 
 void ImageProcessingWindow::informationfiltrage() {
