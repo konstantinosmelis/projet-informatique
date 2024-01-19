@@ -18,10 +18,9 @@ class ListWindow : public QMainWindow {
         ~ListWindow();
 
     private slots:
-        void on_LoadImage_clicked();
-        void on_ModifDatabaseButton_clicked();
-        void on_TraitemenButton_clicked();
-        void on_EXITBUTTON_clicked();
+        void on_addImageButton_clicked();
+        void on_imageProcessingButton_clicked();
+        void on_exitButton_clicked();
 
     private:
         Ui::ListWindow *ui;

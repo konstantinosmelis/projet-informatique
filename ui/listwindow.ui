@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>ListWindow</class>
- <widget class="QMainWindow" name="SecondWindow">
+ <widget class="QMainWindow" name="ListWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,10 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Liste des images</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="QTableWidget" name="DataBaseTable">
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTableWidget" name="databaseTable">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -55,7 +55,7 @@
     </column>
     <column>
      <property name="text">
-      <string>Prix</string>
+      <string>Coût</string>
      </property>
     </column>
     <column>
@@ -65,7 +65,7 @@
     </column>
     <column>
      <property name="text">
-      <string>Date</string>
+      <string>Auteur</string>
      </property>
     </column>
     <column>
@@ -74,7 +74,7 @@
      </property>
     </column>
    </widget>
-   <widget class="QPushButton" name="EXITBUTTON">
+   <widget class="QPushButton" name="exitButton">
     <property name="geometry">
      <rect>
       <x>630</x>
@@ -87,7 +87,7 @@
      <string>Exit</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="ModifDatabaseButton">
+   <widget class="QPushButton" name="addImageButton">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -97,10 +97,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>Modifier la base de donnée</string>
+     <string>Ajouter une image</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="TraitemenButton">
+   <widget class="QPushButton" name="imageProcessingButton">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -113,7 +113,7 @@
      <string>Effectuer un  traitement </string>
     </property>
    </widget>
-   <widget class="QGroupBox" name="AffichageDeLimageSelect">
+   <widget class="QGroupBox" name="imageDisplayBox">
     <property name="geometry">
      <rect>
       <x>850</x>

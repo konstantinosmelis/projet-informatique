@@ -26,23 +26,19 @@ ListWindow::~ListWindow() {
     delete ui;
 }
 
-void ListWindow::on_LoadImage_clicked() {
-
-}
-
-void ListWindow::on_ModifDatabaseButton_clicked() {
+void ListWindow::on_addImageButton_clicked() {
     DatabaseWindow *DataBaseFenetre = new DatabaseWindow;
     DataBaseFenetre->show();
     this->hide();
 }
 
-void ListWindow::on_TraitemenButton_clicked() {
+void ListWindow::on_imageProcessingButton_clicked() {
     ImageProcessingWindow *TraitementFenetre = new ImageProcessingWindow;
     TraitementFenetre->show();
     this->hide();
 }
 
-void ListWindow::on_EXITBUTTON_clicked() {
+void ListWindow::on_exitButton_clicked() {
     // QMessageBox::warnin
     // StandarButton defaultButton = NoButton ;
     // QMessageBox::warning(this,"Attention","Voulez vous vraiment fermer",StandarButtons buttons = annuler);
