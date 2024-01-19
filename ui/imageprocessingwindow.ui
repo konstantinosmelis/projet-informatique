@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TraitementImageWindow</class>
+ <class>ImageProcessingWindow</class>
  <widget class="QMainWindow" name="TraitementImageWindow">
   <property name="geometry">
    <rect>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Traitement de l'image</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="ImageTraitementWindow">

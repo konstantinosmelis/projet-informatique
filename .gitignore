@@ -5,6 +5,7 @@ lib/
 etc/
 usr/
 users/
+img/
 ui/ui_*
 /bin/
 /obj/

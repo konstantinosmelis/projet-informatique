@@ -1,7 +1,8 @@
 #include "ListWindow.h"
 #include "../../../ui/ui_listwindow.h"
+
 #include "../database/DatabaseWindow.h"
-#include "../traitementimagewindow.h"
+#include "../processing/ImageProcessingWindow.h"
 #include "../login/LoginWindow.h"
 
 #include <QMessageBox>
@@ -36,7 +37,7 @@ void ListWindow::on_ModifDatabaseButton_clicked() {
 }
 
 void ListWindow::on_TraitemenButton_clicked() {
-    TraitementImageWindow *TraitementFenetre = new TraitementImageWindow;
+    ImageProcessingWindow *TraitementFenetre = new ImageProcessingWindow;
     TraitementFenetre->show();
     this->hide();
 }

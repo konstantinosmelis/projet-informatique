@@ -4,15 +4,15 @@
 #include <QMainWindow>
 
 namespace Ui {
-    class TraitementImageWindow;
+    class ImageProcessingWindow;
 }
 
-class TraitementImageWindow : public QMainWindow {
+class ImageProcessingWindow : public QMainWindow {
     Q_OBJECT
 
     public:
-        explicit TraitementImageWindow(QWidget *parent = nullptr);
-        ~TraitementImageWindow();
+        explicit ImageProcessingWindow(QWidget *parent = nullptr);
+        ~ImageProcessingWindow();
         void informationfiltrage() ;
 
     private slots:
@@ -20,7 +20,7 @@ class TraitementImageWindow : public QMainWindow {
         void on_returnButtonTraitement_clicked();
 
     private:
-        Ui::TraitementImageWindow *ui;
+        Ui::ImageProcessingWindow *ui;
 };
 
 #endif // TRAITEMENTIMAGEWINDOW_H

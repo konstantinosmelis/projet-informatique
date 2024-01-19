@@ -22,7 +22,7 @@ add_executable(image_processor
         ${CMAKE_SOURCE_DIR}/src/user/User.h ${CMAKE_SOURCE_DIR}/src/user/User.cpp
         ${CMAKE_SOURCE_DIR}/src/gui/list/ListWindow.h ${CMAKE_SOURCE_DIR}/src/gui/list/ListWindow.cpp ${CMAKE_SOURCE_DIR}/ui/listwindow.ui
         ${CMAKE_SOURCE_DIR}/src/gui/database/DatabaseWindow.h ${CMAKE_SOURCE_DIR}/src/gui/database/DatabaseWindow.cpp ${CMAKE_SOURCE_DIR}/ui/databasewindow.ui
-        ${CMAKE_SOURCE_DIR}/src/gui/traitementimagewindow.h ${CMAKE_SOURCE_DIR}/src/gui/traitementimagewindow.cpp ${CMAKE_SOURCE_DIR}/src/gui/traitementimagewindow.ui
+        ${CMAKE_SOURCE_DIR}/src/gui/processing/ImageProcessingWindow.h ${CMAKE_SOURCE_DIR}/src/gui/processing/ImageProcessingWindow.cpp ${CMAKE_SOURCE_DIR}/ui/imageprocessingwindow.ui
 )
 
 target_link_libraries(image_processor Qt::Core Qt::Gui Qt::Widgets ${OpenCV_LIBS})

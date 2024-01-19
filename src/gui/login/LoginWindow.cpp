@@ -1,5 +1,6 @@
 #include "LoginWindow.h"
 #include "../../../ui/ui_loginwindow.h"
+
 #include "../list/ListWindow.h"
 
 #include "../../user/User.h"

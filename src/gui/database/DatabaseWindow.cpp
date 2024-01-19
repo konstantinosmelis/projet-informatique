@@ -1,5 +1,6 @@
 #include "DatabaseWindow.h"
 #include "../../../ui/ui_databasewindow.h"
+
 #include "../login/LoginWindow.h"
 #include "../list/ListWindow.h"
 
