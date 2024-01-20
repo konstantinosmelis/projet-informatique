@@ -62,7 +62,6 @@ void ListWindow::on_exitButton_clicked() {
     msgBox.setDefaultButton(QMessageBox::Save);
     int ret = msgBox.exec();
 
+    emit logout();
     this->close();
-    LoginWindow *login = new LoginWindow;
-    login->show();
 }

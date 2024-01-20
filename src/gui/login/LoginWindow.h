@@ -17,11 +17,13 @@ class LoginWindow : public QMainWindow {
         LoginWindow(const std::string &, QWidget *parent = nullptr);
         ~LoginWindow();
 
+    private slots:
+        void logout();
+        void on_loginButton_clicked();
+
     private:
         Ui::LoginWindow *ui;
         std::string _userPath;
-
-    private slots:
-        void on_loginButton_clicked();
 };
+
 #endif // MAINWINDOW_H

@@ -24,11 +24,16 @@ LoginWindow::~LoginWindow() {
     delete ui;
 }
 
+void LoginWindow::logout() {
+    this->show();
+}
+
 void LoginWindow::on_loginButton_clicked() {
     User user(ui->usernameText->toPlainText().toStdString(), ui->passwordText->toPlainText().toStdString());
     if(user.verifyLogin(this->_userPath) && !user.getUsername().empty()) {
-        this->close();
+        this->hide();
         ListWindow *secondFenetre = new ListWindow(user);
+        this->connect(secondFenetre, SIGNAL(logout()), SLOT(logout()));
         secondFenetre->show();
     }
     else {

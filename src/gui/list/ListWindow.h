@@ -17,6 +17,9 @@ class ListWindow : public QMainWindow {
         explicit ListWindow(const User &, QWidget *parent = nullptr);
         ~ListWindow();
 
+    signals:
+        void logout();
+
     private slots:
         void loadTable() const;
         void on_addImageButton_clicked();
