@@ -14,7 +14,7 @@ class ListWindow : public QMainWindow {
     Q_OBJECT
 
     public:
-        ListWindow(const User &, QWidget *parent = nullptr);
+        explicit ListWindow(const User &, QWidget *parent = nullptr);
         ~ListWindow();
 
     private slots:

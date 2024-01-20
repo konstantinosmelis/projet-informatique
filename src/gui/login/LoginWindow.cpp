@@ -27,7 +27,7 @@ LoginWindow::~LoginWindow() {
 void LoginWindow::on_loginButton_clicked() {
     User user(ui->usernameText->toPlainText().toStdString(), ui->passwordText->toPlainText().toStdString());
     if(user.verifyLogin(this->_userPath) && !user.getUsername().empty()) {
-        this->hide();
+        this->close();
         ListWindow *secondFenetre = new ListWindow(user);
         secondFenetre->show();
     }

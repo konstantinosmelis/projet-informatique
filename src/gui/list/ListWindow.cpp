@@ -14,7 +14,7 @@ ListWindow::ListWindow(const User &user, QWidget *parent)
 {
     this->_user = user;
     ui->setupUi(this);
-    this->_database.load("/home/dinos/Development/C-C++/image-processor/img/");
+    this->_database.load("/home/dinos/Development/C-C++/image_processing_tests_opencv/etc");
     this->loadTable();
 }
 
@@ -24,19 +24,21 @@ ListWindow::~ListWindow() {
 
 void ListWindow::loadTable() const {
     int i = 0;
+    ui->databaseTable->setRowCount(0);
     ui->databaseTable->setRowCount((int) this->_database.getImages().size());
     for(const Image &image : this->_database.getImages()) {
         ui->databaseTable->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(image.getImageDescriptor().getTitle())));
         ui->databaseTable->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(image.getImageDescriptor().getSource())));
         ui->databaseTable->setItem(i, 2, new QTableWidgetItem(QString::fromStdString(image.getImageDescriptor().getAuthor())));
-        ui->databaseTable->setItem(i, 3, new QTableWidgetItem(QString::fromStdString(std::to_string(image.getImageDescriptor().getWeight()))));
-        ui->databaseTable->setItem(i, 4, new QTableWidgetItem(QString::fromStdString(image.getImageDescriptor().getAccessLevel())));
+        ui->databaseTable->setItem(i, 3, new QTableWidgetItem(QString::fromStdString(image.getImageDescriptor().getAccessLevel())));
+        ui->databaseTable->setItem(i, 4, new QTableWidgetItem(QString::fromStdString(std::to_string(image.getImageDescriptor().getWeight()))));
         i++;
     }
 }
 
 void ListWindow::on_addImageButton_clicked() {
     DatabaseWindow *databaseWindow = new DatabaseWindow(this->_database);
+    this->connect(databaseWindow, SIGNAL(imageAdded()), SLOT(loadTable()));
     databaseWindow->show();
 }
 

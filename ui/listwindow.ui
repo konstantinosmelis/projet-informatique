@@ -6,23 +6,86 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1300</width>
-    <height>671</height>
+    <width>1482</width>
+    <height>612</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Liste des images</string>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="exitButton">
+    <property name="geometry">
+     <rect>
+      <x>1310</x>
+      <y>520</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Quitter</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="addImageButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>520</y>
+      <width>221</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ajouter une image</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="imageProcessingButton">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>520</y>
+      <width>241</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Effectuer un traitement </string>
+    </property>
+   </widget>
    <widget class="QTableWidget" name="databaseTable">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>741</width>
-      <height>221</height>
+      <x>20</x>
+      <y>30</y>
+      <width>1001</width>
+      <height>441</height>
      </rect>
     </property>
+    <property name="cornerButtonEnabled">
+     <bool>false</bool>
+    </property>
+    <attribute name="horizontalHeaderCascadingSectionResizes">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderMinimumSectionSize">
+     <number>70</number>
+    </attribute>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>190</number>
+    </attribute>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderCascadingSectionResizes">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderStretchLastSection">
+     <bool>false</bool>
+    </attribute>
     <column>
      <property name="text">
       <string>Nom de l'image</string>
@@ -40,66 +103,40 @@
     </column>
     <column>
      <property name="text">
-      <string>Coût</string>
+      <string>Niveau d'accès</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>Niveau d'accès</string>
+      <string>Coût</string>
      </property>
     </column>
    </widget>
-   <widget class="QPushButton" name="exitButton">
+   <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>360</y>
-      <width>151</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Exit</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="addImageButton">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>360</y>
-      <width>221</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Ajouter une image</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="imageProcessingButton">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>360</y>
-      <width>241</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Effectuer un traitement </string>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="imageDisplayBox">
-    <property name="geometry">
-     <rect>
-      <x>850</x>
-      <y>10</y>
-      <width>261</width>
-      <height>231</height>
+      <x>1070</x>
+      <y>70</y>
+      <width>391</width>
+      <height>371</height>
      </rect>
     </property>
     <property name="title">
      <string/>
     </property>
+    <widget class="QLabel" name="thumnailContainer">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>391</width>
+       <height>371</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -107,8 +144,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1300</width>
-     <height>26</height>
+     <width>1482</width>
+     <height>23</height>
     </rect>
    </property>
   </widget>

@@ -13,9 +13,11 @@ class DatabaseWindow : public QMainWindow {
     Q_OBJECT
 
     public:
-        explicit DatabaseWindow(QWidget *parent = nullptr);
-        DatabaseWindow(Database &, QWidget *parent = nullptr);
+        explicit DatabaseWindow(Database &, QWidget *parent = nullptr);
         ~DatabaseWindow();
+
+    signals:
+        void imageAdded();
 
     private slots:
         void on_loadImageButton_clicked();
