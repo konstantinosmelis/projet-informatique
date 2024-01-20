@@ -25,7 +25,7 @@ add_executable(image_processor
         ${CMAKE_SOURCE_DIR}/src/gui/processing/ImageProcessingWindow.h ${CMAKE_SOURCE_DIR}/src/gui/processing/ImageProcessingWindow.cpp ${CMAKE_SOURCE_DIR}/ui/imageprocessingwindow.ui
 )
 
-target_link_libraries(image_processor Qt::Core Qt::Gui Qt::Widgets ${OpenCV_LIBS})
+target_link_libraries(image_processor PRIVATE Qt::Core Qt::Gui Qt::Widgets ${OpenCV_LIBS})
 
 include(GNUInstallDirs)
 install(TARGETS image_processor
