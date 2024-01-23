@@ -109,7 +109,7 @@ class Image {
         /**
          * \brief Add salt pepper noise to the image
          */
-        void saltpepperNoise();
+        void saltpepperNoise(const int);
 
         /**
          * \brief Add gaussian noise to the image

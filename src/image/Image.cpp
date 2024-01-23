@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <experimental/random>
 #include "Image.h"
 
 /**
@@ -300,26 +301,21 @@ void Image::applyDilationFilter(const int iterations = 1, const int kernelSize =
 void Image::colorSegmentation(const int lowR, const int highR, const int lowG, const int highG, const int lowB, const int highB) {
     int lowerBounds[] = { lowB, lowG, lowR };
     int higherBounds[] = { highB, highG, highR };
-    // convertir l'image en espace de niveau de gris
-    cv::Mat grayscale, outputImage;
-    cv::cvtColor(this->_image, grayscale, cv::COLOR_BGR2GRAY);
-
-    std::vector<cv::Mat> channels;
-    cv::split(this->_image, channels);
 
     for(int c = 0; c < this->_image.channels(); c++) {
-        cv::Mat mask;
-        // appliquer le seuillage par hysteresis pour obtenir le masque
-        cv::inRange(grayscale, lowerBounds[c], higherBounds[c], mask);
-        cv::bitwise_not(mask, mask);
-        // appliquer le masque a chaque cannal
-        cv::bitwise_and(channels[c], channels[c], outputImage, mask);
-        channels[c] = outputImage;
+        for(int i = 0; i < this->_image.rows; i++) {
+            for(int j = 0; j < this->_image.cols; j++) {
+                // appliquer le suillage par hysteresis
+                this->_image.at<cv::Vec3b>(i, j)[c] = (this->_image.at<cv::Vec3b>(i, j)[c] < lowerBounds[c] || this->_image.at<cv::Vec3b>(i, j)[c] > higherBounds[c] ? 0 : this->_image.at<cv::Vec3b>(i, j)[c]);
+            }
+        }
     }
-    cv::merge(channels, this->_image);
 }
 
-void Image::saltpepperNoise() {
+/**
+ * \param percentage the noise percentage
+ */
+void Image::saltpepperNoise(const int percentage) {
     // Obtenir le nombre de lignes et de colonnes de l'image
     int rows = this->_image.rows;
     int cols = this->_image.cols;
@@ -330,14 +326,14 @@ void Image::saltpepperNoise() {
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < cols; ++j) {
                 // Générer une valeur aléatoire entre 0 et 20
-                int random_value = std::rand() % 21;
+                int random_value = std::experimental::randint(0, 100 / percentage);
 
                 // Appliquer le bruit poivre et sel
                 if (random_value == 0) {
                     // Poivre (noir)
                     this->_image.at<cv::Vec3b>(i, j) = cv::Vec3b(0, 0, 0);
                 }
-                else if (random_value == 20) {
+                else if (random_value == 100 / percentage) {
                     // Sel (blanc)
                     this->_image.at<cv::Vec3b>(i, j) = cv::Vec3b(255, 255, 255);
                 }
@@ -350,14 +346,14 @@ void Image::saltpepperNoise() {
             for(int i = 0; i < rows; ++i) {
                 for(int j = 0; j < cols; ++j) {
                     // Générer une valeur aléatoire entre 0 et 20
-                    int random_value = std::rand() % 21;
+                    int random_value = std::experimental::randint(0, 100 / percentage);
 
                     // Appliquer le bruit poivre et sel à chaque canal
                     if (random_value == 0) {
                         // Poivre (noir)
                         this->_image.at<cv::Vec3b>(i, j)[c] = 0;
                     }
-                    else if (random_value == 20) {
+                    else if (random_value == 100 / percentage) {
                         // Sel (blanc)
                         this->_image.at<cv::Vec3b>(i, j)[c] = 255;
                     }
@@ -368,6 +364,9 @@ void Image::saltpepperNoise() {
     }
 }
 
+/**
+ * \param variance the gaussian noise variance
+ */
 void Image::gaussianNoise(double variance) {
     cv::Mat imageBruitee;
     std::vector<cv::Mat> canaux;
