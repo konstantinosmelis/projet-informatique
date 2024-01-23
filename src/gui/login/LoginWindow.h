@@ -19,7 +19,7 @@ class LoginWindow : public QMainWindow {
 
     private slots:
         void logout();
-        void on_loginButton_clicked();
+        void loginHandler();
 
     private:
         Ui::LoginWindow *ui;

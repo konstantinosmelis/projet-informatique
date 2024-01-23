@@ -22,9 +22,10 @@ class ListWindow : public QMainWindow {
 
     private slots:
         void loadTable() const;
-        void on_addImageButton_clicked();
-        void on_imageProcessingButton_clicked();
-        void on_exitButton_clicked();
+        void addImageHandler();
+        void imageProcessingHandler();
+        void imageDisplayHandler(const int);
+        void exitHandler();
 
     private:
         Ui::ListWindow *ui;

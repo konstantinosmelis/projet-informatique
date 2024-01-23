@@ -18,6 +18,7 @@ LoginWindow::LoginWindow(const std::string &userPath, QWidget *parent)
 {
     this->_userPath = userPath;
     ui->setupUi(this);
+    this->connect(ui->loginButton, &QPushButton::clicked,this, [=]() { this->loginHandler(); });
 }
 
 LoginWindow::~LoginWindow() {
@@ -28,8 +29,8 @@ void LoginWindow::logout() {
     this->show();
 }
 
-void LoginWindow::on_loginButton_clicked() {
-    User user(ui->usernameText->toPlainText().toStdString(), ui->passwordText->toPlainText().toStdString());
+void LoginWindow::loginHandler() {
+    User user(ui->usernameText->text().toStdString(), ui->passwordText->text().toStdString());
     if(user.verifyLogin(this->_userPath) && !user.getUsername().empty()) {
         this->hide();
         ListWindow *secondFenetre = new ListWindow(user);
@@ -38,5 +39,6 @@ void LoginWindow::on_loginButton_clicked() {
     }
     else {
         ui->passwordText->clear();
+        ui->failedToConnectText->setText("* nom d'utilisateur ou mot de passe incorrect.");
     }
 }

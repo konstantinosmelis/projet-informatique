@@ -6,6 +6,7 @@ etc/
 usr/
 users/
 img/
+resources/
 ui/ui_*
 /bin/
 /obj/
