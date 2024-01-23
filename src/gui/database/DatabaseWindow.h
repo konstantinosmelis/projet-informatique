@@ -20,9 +20,9 @@ class DatabaseWindow : public QMainWindow {
         void imageAdded();
 
     private slots:
-        void on_loadImageButton_clicked();
-        void on_finishButton_clicked();
-        void on_returnButton_clicked();
+        void imageLoadingHandler();
+        void imageAddedHandler();
+        void returnHandler();
 
     private:
         Ui::DatabaseWindow *ui;

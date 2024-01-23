@@ -5,13 +5,6 @@
 
 #include "../../user/User.h"
 
-LoginWindow::LoginWindow(QWidget *parent)
-    : QMainWindow(parent),
-    ui(new Ui::LoginWindow)
-{
-    ui->setupUi(this);
-}
-
 LoginWindow::LoginWindow(const std::string &userPath, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::LoginWindow)

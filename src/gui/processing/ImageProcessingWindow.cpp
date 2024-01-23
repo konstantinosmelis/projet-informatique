@@ -18,12 +18,6 @@ ImageProcessingWindow::~ImageProcessingWindow() {
     delete ui;
 }
 
-void ImageProcessingWindow::on_EXITtraitement_clicked() {
-    this->close();
-    LoginWindow *login = new LoginWindow;
-    login->show();
-}
-
 void ImageProcessingWindow::on_returnButtonTraitement_clicked() {
     this->close() ;
 }

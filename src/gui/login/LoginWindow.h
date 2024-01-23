@@ -13,8 +13,7 @@ class LoginWindow : public QMainWindow {
     Q_OBJECT
 
     public:
-        LoginWindow(QWidget *parent = nullptr);
-        LoginWindow(const std::string &, QWidget *parent = nullptr);
+        explicit LoginWindow(const std::string &, QWidget *parent = nullptr);
         ~LoginWindow();
 
     private slots:

@@ -11,6 +11,10 @@ DatabaseWindow::DatabaseWindow(Database &database, QWidget *parent)
     _database(&database)
 {
     ui->setupUi(this);
+
+    this->connect(ui->loadImageButton, &QPushButton::clicked, this, [=]() { this->imageLoadingHandler(); });
+    this->connect(ui->finishButton, &QPushButton::clicked, this, [=]() { this->imageAddedHandler(); });
+    this->connect(ui->returnButton, &QPushButton::clicked, this, [=]() { this->returnHandler(); });
 }
 
 DatabaseWindow::~DatabaseWindow() {
@@ -18,13 +22,13 @@ DatabaseWindow::~DatabaseWindow() {
     delete _database;
 }
 
-void DatabaseWindow::on_loadImageButton_clicked() {
+void DatabaseWindow::imageLoadingHandler() {
     this->_imagePath = QFileDialog::getOpenFileName(this, tr("Choisir une image"), "/home/", tr("Image Files (*.png *.jpg)"));
     ui->imagePathText->setText(this->_imagePath);
     ui->imagePreview->setPixmap(QPixmap(this->_imagePath).scaledToWidth(ui->imageGroup->width()));
 }
 
-void DatabaseWindow::on_finishButton_clicked() {
+void DatabaseWindow::imageAddedHandler() {
     if(!(this->_imagePath.isEmpty() || ui->imageNameText->toPlainText().isEmpty() || ui->imageSourceText->toPlainText().isEmpty() || ui->imageSourceText->toPlainText().isEmpty() || ui->accessLevelText->toPlainText().isEmpty() || ui->imageCostText->toPlainText().isEmpty())) {
         this->_database->addImage(Image(ImageDescriptor((int) this->_database->getImages().size() + 1, this->_imagePath.toStdString(), ui->imageNameText->toPlainText().toStdString(),
                                         ui->imageSourceText->toPlainText().toStdString(), ui->imageAuthorText->toPlainText().toStdString(),
@@ -34,6 +38,6 @@ void DatabaseWindow::on_finishButton_clicked() {
     }
 }
 
-void DatabaseWindow::on_returnButton_clicked() {
+void DatabaseWindow::returnHandler() {
     this->close();
 }
