@@ -1,7 +1,8 @@
+#include "Database.h"
+
 #include <filesystem>
 #include <fstream>
 #include <vector>
-#include "Database.h"
 
 Database::Database() {
 }
@@ -9,7 +10,7 @@ Database::Database() {
 /**
  * \param directoryName the path to thie directory containing the descriptor files
  */
-void Database::load(std::string &directoryName) {
+void Database::load(const std::string &directoryName) {
     int number_of_images = 0;
     std::filesystem::directory_iterator direcotry;
     std::ifstream file;
@@ -42,6 +43,20 @@ void Database::load(std::string &directoryName) {
  */
 std::vector<Image> Database::getImages() const {
     return this->_images;
+}
+
+/**
+ * \param id a image's identifier
+ * \return the image with the given id
+ */
+Image Database::getImageById(const int id) {
+    for (Image image : this->_images) {
+        if (image.getImageDescriptor().getId() == id) {
+            return image;
+        }
+    }
+    // If no matching id is found, return a default-constructed Image
+    return Image();
 }
 
 /**

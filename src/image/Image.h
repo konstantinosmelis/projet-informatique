@@ -2,6 +2,7 @@
 #define IMAGE_H
 
 #include <opencv2/opencv.hpp>
+
 #include "../descriptor/ImageDescriptor.h"
 
 class Image {
@@ -11,10 +12,15 @@ class Image {
 
     public:
         /**
+         * \brief Default constructor
+         */
+        Image();
+
+        /**
          * \brief Creates an Image which stores
          * this matrix and the descriptor
          */
-        Image(const ImageDescriptor &descriptor);
+        Image(const ImageDescriptor &);
 
         /**
          * \brief Get the matrix storing the image
@@ -102,14 +108,14 @@ class Image {
         void applyDilationFilter(const int, const int);
 
         /**
-         * \brief Segment the image by chosing upper and lower bound parameters
+         * \brief Segment the image by chosing upper and lower bound parameters for each color channel
          */
-        void colorSegmentation(const cv::Scalar& lowerBound, const cv::Scalar& upperBound);
+        void colorSegmentation(const int, const int, const int, const int, const int, const int);
 
         /**
          * \brief Add salt pepper noise to the image
          */
-        void saltpepperNoise();
+        void saltpepperNoise(const int);
 
         /**
          * \brief Add gaussian noise to the image

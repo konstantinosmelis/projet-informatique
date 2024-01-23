@@ -1,6 +1,11 @@
+#include "User.h"
+
 #include <filesystem>
 #include <fstream>
-#include "User.h"
+
+User::User() {
+
+}
 
 User::User(const std::string &username, const std::string &password) {
     this->_username = username;
@@ -8,21 +13,21 @@ User::User(const std::string &username, const std::string &password) {
 }
 
 /**
- * \return the user's username
+ * \return the users's username
  */
 std::string User::getUsername() const {
     return this->_username;
 }
 
 /**
- * \return the user's password
+ * \return the users's password
  */
 std::string User::getPassword() const {
     return this->_password;
 }
 
 /**
- * \return whether the user is an administrator or not
+ * \return whether the users is an administrator or not
  */
 bool User::isAdmin() const {
     return this->_isAdmin;
@@ -50,21 +55,21 @@ void User::setAdmin(const bool isAdmin) {
 }
 
 /**
- * \param path The directory where user files are stored
- * \return whether the user can login or not
+ * \param path The directory where users files are stored
+ * \return whether the users can login or not
  */
 bool User::verifyLogin(const std::string &path) {
     std::ifstream file;
     std::string userPath = path + this->_username;
     std::string password;
-    // Check if the user file exists
+    // Check if the users file exists
     if(std::filesystem::exists(userPath)) {
-        // If the file exists te user can login with the correct password
+        // If the file exists te users can login with the correct password
         file.open(userPath);
         file >> password;
-        file >> this->_isAdmin; // Check if the user is an admin
+        file >> this->_isAdmin; // Check if the users is an admin
         file.close();
-        return this->_password == password; // If passwords match the user can login
+        return this->_password == password; // If passwords match the users can login
     }
-    return false; // If the file doesn't exist the user doesn't exist either
+    return false; // If the file doesn't exist the users doesn't exist either
 }

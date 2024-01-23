@@ -1,5 +1,7 @@
 #include "ImageDescriptor.h"
+
 #include "../image/Image.h"
+
 #include <fstream>
 
 ImageDescriptor::ImageDescriptor() {

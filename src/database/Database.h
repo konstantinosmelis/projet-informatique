@@ -1,8 +1,8 @@
 #ifndef DATABSE_H
 #define DATABSE_H
 
-#include <iostream>
 #include <vector>
+
 #include "../image/Image.h"
 
 class Database {
@@ -18,12 +18,17 @@ class Database {
         /**
          * \brief Load database using files sotred in a specified directory
          */
-        void load(std::string &);
+        void load(const std::string &);
 
         /**
          * \brief Get all the images stored in the database
          */
         std::vector<Image> getImages() const;
+
+        /**
+         * \brief Get an image with a specific id
+         */
+        Image getImageById(const int);
 
         /**
          * \brief Define the images in database

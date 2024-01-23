@@ -1,12 +1,12 @@
 #include <iostream>
 #include <QApplication>
-#include <QPushButton>
+#include "gui/login/LoginWindow.h"
 
 int main(int argc, char* argv[]) {
     QApplication a(argc, argv);
-    QPushButton button("Hello world!", nullptr);
-    button.resize(200, 100);
-    button.show();
+    // a.setWindowIcon(QIcon("/home/dinos/Development/C-C++/image-processor/resources/image_processor.png"));
+    LoginWindow w(argv[1]);
+    w.show();
     std::cout << "Hello world!" << std::endl;
     return QApplication::exec();
 }

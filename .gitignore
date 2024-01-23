@@ -2,6 +2,12 @@
 cmake-build-debug/
 deps/
 lib/
+etc/
+usr/
+users/
+img/
+resources/
+ui/ui_*
 /bin/
 /obj/
 /x64/
