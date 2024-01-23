@@ -289,19 +289,34 @@ void Image::applyDilationFilter(const int iterations = 1, const int kernelSize =
     cv::merge(channels, this->_image);
 }
 
-void Image::colorSegmentation(const cv::Scalar &lowerBound, const cv::Scalar &upperBound) {
-    // ça convertir l'image en espace de niveau de gris
+/**
+ * \param lowR the lower bound for the red channel
+ * \param highR the higher bound for the red channel
+ * \param lowG the lower bound for the green channel
+ * \param highG the higher bound for the green channel
+ * \param lowB the lower bound for the blue channel
+ * \param highB the higher bound for the blue channel
+ */
+void Image::colorSegmentation(const int lowR, const int highR, const int lowG, const int highG, const int lowB, const int highB) {
+    int lowerBounds[] = { lowB, lowG, lowR };
+    int higherBounds[] = { highB, highG, highR };
+    // convertir l'image en espace de niveau de gris
     cv::Mat grayscale, outputImage;
     cv::cvtColor(this->_image, grayscale, cv::COLOR_BGR2GRAY);
 
-    // appliquer le seuillage pour obtenir le masque
-    cv::Mat mask;
-    cv::inRange(grayscale, lowerBound, upperBound, mask);
-    cv::bitwise_not(mask, mask);
+    std::vector<cv::Mat> channels;
+    cv::split(this->_image, channels);
 
-    // appliquer le masque à l'image d'origine
-    cv::bitwise_and(this->_image, this->_image, outputImage, mask);
-    this->_image = outputImage;
+    for(int c = 0; c < this->_image.channels(); c++) {
+        cv::Mat mask;
+        // appliquer le seuillage par hysteresis pour obtenir le masque
+        cv::inRange(grayscale, lowerBounds[c], higherBounds[c], mask);
+        cv::bitwise_not(mask, mask);
+        // appliquer le masque a chaque cannal
+        cv::bitwise_and(channels[c], channels[c], outputImage, mask);
+        channels[c] = outputImage;
+    }
+    cv::merge(channels, this->_image);
 }
 
 void Image::saltpepperNoise() {

@@ -21,6 +21,7 @@ DatabaseWindow::~DatabaseWindow() {
 void DatabaseWindow::on_loadImageButton_clicked() {
     this->_imagePath = QFileDialog::getOpenFileName(this, tr("Choisir une image"), "/home/", tr("Image Files (*.png *.jpg)"));
     ui->imagePathText->setText(this->_imagePath);
+    ui->imagePreview->setPixmap(QPixmap(this->_imagePath).scaledToWidth(ui->imageGroup->width()));
 }
 
 void DatabaseWindow::on_finishButton_clicked() {

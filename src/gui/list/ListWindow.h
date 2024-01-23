@@ -22,6 +22,7 @@ class ListWindow : public QMainWindow {
 
     private slots:
         void loadTable() const;
+        void selectDatabaseHandler();
         void addImageHandler();
         void imageProcessingHandler();
         void imageDisplayHandler(const int);

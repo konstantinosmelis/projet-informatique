@@ -1,10 +1,11 @@
 #include "ListWindow.h"
+
 #include "../../../ui/ui_listwindow.h"
 
 #include "../database/DatabaseWindow.h"
 #include "../processing/ImageProcessingWindow.h"
-#include "../login/LoginWindow.h"
 
+#include <QFileDialog>
 #include <QMessageBox>
 
 ListWindow::ListWindow(const User &user, QWidget *parent)
@@ -14,9 +15,8 @@ ListWindow::ListWindow(const User &user, QWidget *parent)
 {
     this->_user = user;
     ui->setupUi(this);
-    this->_database.load("/home/dinos/Development/C-C++/image_processing_tests_opencv/etc");
-    this->loadTable();
 
+    this->connect(ui->selectDatabaseButton, &QPushButton::clicked, this, [=]() { this->selectDatabaseHandler(); });
     this->connect(ui->addImageButton, &QPushButton::clicked,this, [=]() { this->addImageHandler(); });
     this->connect(ui->imageProcessingButton, &QPushButton::clicked,this, [=]() { this->imageProcessingHandler(); });
     this->connect(ui->exitButton, &QPushButton::clicked,this, [=]() { this->exitHandler(); });
@@ -42,6 +42,14 @@ void ListWindow::loadTable() const {
     }
 }
 
+void ListWindow::selectDatabaseHandler() {
+    QFileDialog databaseDialog;
+    databaseDialog.setFileMode(QFileDialog::Directory);
+    QString databasePath = databaseDialog.getExistingDirectory(this, tr("Choisir un dossier"), "/home/");
+    this->_database.load(databasePath.toStdString());
+    this->loadTable();
+}
+
 void ListWindow::addImageHandler() {
     DatabaseWindow *databaseWindow = new DatabaseWindow(this->_database);
     this->connect(databaseWindow, SIGNAL(imageAdded()), SLOT(loadTable()));
@@ -54,7 +62,7 @@ void ListWindow::imageProcessingHandler() {
 }
 
 void ListWindow::imageDisplayHandler(const int row) {
-    ui->image->setPixmap(QPixmap(QString::fromStdString(this->_database.getImages().at(row).getImageDescriptor().getPath())));
+    ui->image->setPixmap(QPixmap(QString::fromStdString(this->_database.getImages().at(row).getImageDescriptor().getPath())).scaledToWidth(ui->imageGroup->width()));
 }
 
 void ListWindow::exitHandler() {

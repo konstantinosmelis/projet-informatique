@@ -102,9 +102,9 @@ class Image {
         void applyDilationFilter(const int, const int);
 
         /**
-         * \brief Segment the image by chosing upper and lower bound parameters
+         * \brief Segment the image by chosing upper and lower bound parameters for each color channel
          */
-        void colorSegmentation(const cv::Scalar& lowerBound, const cv::Scalar& upperBound);
+        void colorSegmentation(const int, const int, const int, const int, const int, const int);
 
         /**
          * \brief Add salt pepper noise to the image

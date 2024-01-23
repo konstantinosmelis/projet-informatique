@@ -1,7 +1,6 @@
 #ifndef DATABSE_H
 #define DATABSE_H
 
-#include <iostream>
 #include <vector>
 #include "../image/Image.h"
 

@@ -36,6 +36,8 @@ void LoginWindow::loginHandler() {
         ListWindow *secondFenetre = new ListWindow(user);
         this->connect(secondFenetre, SIGNAL(logout()), SLOT(logout()));
         secondFenetre->show();
+        ui->usernameText->clear();
+        ui->passwordText->clear();
     }
     else {
         ui->passwordText->clear();

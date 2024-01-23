@@ -134,19 +134,6 @@
      </property>
     </widget>
    </widget>
-   <widget class="QPushButton" name="exitButton">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>480</y>
-      <width>93</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Quitter</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="returnButton">
     <property name="geometry">
      <rect>
@@ -185,6 +172,22 @@
     <property name="title">
      <string/>
     </property>
+    <widget class="QLabel" name="imagePreview">
+     <property name="geometry">
+      <rect>
+       <x>8</x>
+       <y>15</y>
+       <width>291</width>
+       <height>251</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>No image yet</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
