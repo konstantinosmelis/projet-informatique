@@ -70,7 +70,7 @@ void ListWindow::imageDisplayHandler(const int row) {
 void ListWindow::exitHandler() {
     QMessageBox msgBox;
     msgBox.setWindowTitle("Quitter");
-    msgBox.setInformativeText("Etes-vous sur de vouloir quitter ?");
+    msgBox.setInformativeText("Êtes-vous sur de vouloir quitter ?");
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
     msgBox.setDefaultButton(QMessageBox::No);
     if(msgBox.exec() == QMessageBox::Yes) {

@@ -13,7 +13,7 @@ class ImageProcessingWindow : public QMainWindow {
     Q_OBJECT
 
     public:
-        explicit ImageProcessingWindow(const Image &, QWidget *parent = nullptr);
+        explicit ImageProcessingWindow(const Image, QWidget *parent = nullptr);
         ~ImageProcessingWindow();
 
     private slots:
