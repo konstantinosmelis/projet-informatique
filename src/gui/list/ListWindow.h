@@ -32,6 +32,7 @@ class ListWindow : public QMainWindow {
         Ui::ListWindow *ui;
         User _user;
         Database _database;
+        int _imageId;
 };
 
 #endif // SECONDWINDOW_H

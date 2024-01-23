@@ -1,5 +1,4 @@
 #include "ListWindow.h"
-
 #include "../../../ui/ui_listwindow.h"
 
 #include "../database/DatabaseWindow.h"
@@ -46,6 +45,8 @@ void ListWindow::selectDatabaseHandler() {
     QFileDialog databaseDialog;
     databaseDialog.setFileMode(QFileDialog::Directory);
     QString databasePath = databaseDialog.getExistingDirectory(this, tr("Choisir un dossier"), "/home/");
+    if(databasePath.isEmpty())
+        return;
     this->_database.load(databasePath.toStdString());
     this->loadTable();
 }
@@ -57,11 +58,12 @@ void ListWindow::addImageHandler() {
 }
 
 void ListWindow::imageProcessingHandler() {
-    ImageProcessingWindow *TraitementFenetre = new ImageProcessingWindow;
-    TraitementFenetre->show();
+    ImageProcessingWindow *imageProcessingWindow = new ImageProcessingWindow(this->_database.getImageById(this->_imageId));
+    imageProcessingWindow->show();
 }
 
 void ListWindow::imageDisplayHandler(const int row) {
+    this->_imageId = ui->databaseTable->item(row, 0)->text().toInt();
     ui->image->setPixmap(QPixmap(QString::fromStdString(this->_database.getImages().at(row).getImageDescriptor().getPath())).scaledToWidth(ui->imageGroup->width()));
 }
 

@@ -1,7 +1,8 @@
+#include "Database.h"
+
 #include <filesystem>
 #include <fstream>
 #include <vector>
-#include "Database.h"
 
 Database::Database() {
 }
@@ -42,6 +43,20 @@ void Database::load(const std::string &directoryName) {
  */
 std::vector<Image> Database::getImages() const {
     return this->_images;
+}
+
+/**
+ * \param id a image's identifier
+ * \return the image with the given id
+ */
+Image Database::getImageById(const int id) {
+    for (Image image : this->_images) {
+        if (image.getImageDescriptor().getId() == id) {
+            return image;
+        }
+    }
+    // If no matching id is found, return a default-constructed Image
+    return Image();
 }
 
 /**

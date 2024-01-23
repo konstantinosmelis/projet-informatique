@@ -31,6 +31,7 @@ void LoginWindow::loginHandler() {
         secondFenetre->show();
         ui->usernameText->clear();
         ui->passwordText->clear();
+        ui->failedToConnectText->setText("");
     }
     else {
         ui->passwordText->clear();

@@ -2,6 +2,7 @@
 #define DATABSE_H
 
 #include <vector>
+
 #include "../image/Image.h"
 
 class Database {
@@ -23,6 +24,11 @@ class Database {
          * \brief Get all the images stored in the database
          */
         std::vector<Image> getImages() const;
+
+        /**
+         * \brief Get an image with a specific id
+         */
+        Image getImageById(const int);
 
         /**
          * \brief Define the images in database

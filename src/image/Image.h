@@ -2,6 +2,7 @@
 #define IMAGE_H
 
 #include <opencv2/opencv.hpp>
+
 #include "../descriptor/ImageDescriptor.h"
 
 class Image {
@@ -11,10 +12,15 @@ class Image {
 
     public:
         /**
+         * \brief Default constructor
+         */
+        Image();
+
+        /**
          * \brief Creates an Image which stores
          * this matrix and the descriptor
          */
-        Image(const ImageDescriptor &descriptor);
+        Image(const ImageDescriptor &);
 
         /**
          * \brief Get the matrix storing the image

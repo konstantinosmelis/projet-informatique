@@ -1,176 +1,403 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>ImageProcessingWindow</class>
- <widget class="QMainWindow" name="TraitementImageWindow">
+ <widget class="QMainWindow" name="ImageProcessingWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1039</width>
-    <height>600</height>
+    <width>797</width>
+    <height>499</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Traitement de l'image</string>
+   <string>Appliquer un traitement</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QGroupBox" name="ImageTraitementWindow">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>321</width>
-      <height>301</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="returnButtonTraitement">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>328</y>
-      <width>121</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Retour</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="EXITtraitement">
-    <property name="geometry">
-     <rect>
-      <x>162</x>
-      <y>328</y>
-      <width>111</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Exit</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="SaveButtonTraitement">
-    <property name="geometry">
-     <rect>
-      <x>800</x>
-      <y>330</y>
-      <width>111</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Enregistrer</string>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>670</x>
-      <y>0</y>
-      <width>391</width>
-      <height>311</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>10</y>
-      <width>158</width>
-      <height>283</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QPushButton" name="pushButton_2">
-       <property name="text">
-        <string>Normalisation</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>Histogramme</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_4">
-       <property name="text">
-        <string>Detection de droites</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_3">
-       <property name="text">
-        <string>Detection de contours</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_6">
-       <property name="text">
-        <string>Erosion</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_7">
-       <property name="text">
-        <string>Bruitage</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_8">
-       <property name="text">
-        <string>Segmentation</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_5">
-       <property name="text">
-        <string>Dilatation</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout_8" columnstretch="0,1,0">
+    <item row="0" column="1">
+     <layout class="QGridLayout" name="gridLayout_7">
+      <item row="0" column="0">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QGroupBox" name="ImageProcessingWindows">
+          <property name="title">
+           <string/>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_10">
+           <item row="0" column="0">
+            <widget class="QLabel" name="imageBeforeProcessing">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QPushButton" name="returnButton">
+            <property name="text">
+             <string>Retour</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="1">
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="title">
+         <string/>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="0" column="0">
+          <widget class="QPushButton" name="histogramButton">
+           <property name="text">
+            <string>Histogramme</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1" rowspan="3">
+          <widget class="QGroupBox" name="groupBox_7">
+           <property name="title">
+            <string/>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_5">
+            <item row="0" column="1" colspan="2">
+             <widget class="QPushButton" name="segmentationButton">
+              <property name="text">
+               <string>Segmentation</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="label_10">
+              <property name="text">
+               <string>min</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QLabel" name="label_12">
+              <property name="text">
+               <string>max</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_6">
+              <property name="text">
+               <string>Rouge</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QSpinBox" name="redMinValue"/>
+            </item>
+            <item row="2" column="2">
+             <widget class="QSpinBox" name="redMaxValue"/>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="label_7">
+              <property name="text">
+               <string>Vert</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QSpinBox" name="greenMinValue"/>
+            </item>
+            <item row="3" column="2">
+             <widget class="QSpinBox" name="greenMaxValue"/>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_11">
+              <property name="text">
+               <string>bleu</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QSpinBox" name="blueMinValue"/>
+            </item>
+            <item row="4" column="2">
+             <widget class="QSpinBox" name="blueMaxValue"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="normalisationButton">
+           <property name="text">
+            <string>Normalisation</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" rowspan="2">
+          <widget class="QGroupBox" name="groupBox_3">
+           <property name="title">
+            <string/>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <item row="0" column="0" colspan="2">
+             <widget class="QPushButton" name="equalizationButton">
+              <property name="text">
+               <string>Égalisation</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>min</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>max</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QSpinBox" name="equalizationMinValue"/>
+            </item>
+            <item row="2" column="1">
+             <widget class="QSpinBox" name="equalizationMaxValue"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="3" column="1" rowspan="5">
+          <widget class="QGroupBox" name="groupBox_4">
+           <property name="title">
+            <string/>
+           </property>
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="0" column="0" colspan="2">
+             <widget class="QPushButton" name="lineDetectionButton">
+              <property name="text">
+               <string>Détection de droites</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_5">
+              <property name="text">
+               <string>Seuil</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Longueur minimum</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>Écart</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="lineDetectionThreshold"/>
+            </item>
+            <item row="2" column="1">
+             <widget class="QSpinBox" name="lineDetectionMinLength"/>
+            </item>
+            <item row="3" column="1">
+             <widget class="QSpinBox" name="lineDetectionMaxGapValue"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QPushButton" name="borderEnhancementButton">
+           <property name="text">
+            <string>Réhaussement de contours</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QPushButton" name="erosionButton">
+           <property name="text">
+            <string>Érosion</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QPushButton" name="dilationButton">
+           <property name="text">
+            <string>Dilatation</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0" rowspan="2">
+          <widget class="QGroupBox" name="groupBox_5">
+           <property name="title">
+            <string/>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_3">
+            <item row="0" column="0" colspan="2">
+             <widget class="QPushButton" name="saltpepperNoiseButton">
+              <property name="text">
+               <string>Bruit P&amp;S</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_9">
+              <property name="text">
+               <string>Pourcentage</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="saltpeperPercentageValue"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QGroupBox" name="groupBox_6">
+           <property name="title">
+            <string/>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="0" column="0" colspan="2">
+             <widget class="QPushButton" name="gaussianNoiseButton">
+              <property name="text">
+               <string>Bruit Gaussien</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_8">
+              <property name="text">
+               <string>Variance</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QDoubleSpinBox" name="gaussianNoiseVarianceValue"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string/>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_9">
+           <item row="0" column="0">
+            <widget class="QLabel" name="imageAfterProcessing">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QPushButton" name="saveButton">
+            <property name="text">
+             <string>Enregistrer</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="2">
+     <spacer name="horizontalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1039</width>
-     <height>26</height>
+     <width>797</width>
+     <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuAide">
-    <property name="title">
-     <string>Aide</string>
-    </property>
-    <addaction name="actionfiltrage"/>
-   </widget>
-   <addaction name="menuAide"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionfiltrage">
-   <property name="text">
-    <string>filtrage</string>
-   </property>
-  </action>
  </widget>
  <resources/>
  <connections/>

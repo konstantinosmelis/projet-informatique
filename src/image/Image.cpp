@@ -1,6 +1,10 @@
+#include "Image.h"
+
 #include <cstdlib>
 #include <experimental/random>
-#include "Image.h"
+
+Image::Image() {
+}
 
 /**
  * \param descriptor a descriptor to give to the image
