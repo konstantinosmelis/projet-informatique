@@ -112,10 +112,18 @@
              </widget>
             </item>
             <item row="2" column="1">
-             <widget class="QSpinBox" name="redMinValue"/>
+             <widget class="QSpinBox" name="redMinValue">
+              <property name="maximum">
+               <number>255</number>
+              </property>
+             </widget>
             </item>
             <item row="2" column="2">
-             <widget class="QSpinBox" name="redMaxValue"/>
+             <widget class="QSpinBox" name="redMaxValue">
+              <property name="maximum">
+               <number>255</number>
+              </property>
+             </widget>
             </item>
             <item row="3" column="0">
              <widget class="QLabel" name="label_7">
@@ -125,10 +133,18 @@
              </widget>
             </item>
             <item row="3" column="1">
-             <widget class="QSpinBox" name="greenMinValue"/>
+             <widget class="QSpinBox" name="greenMinValue">
+              <property name="maximum">
+               <number>255</number>
+              </property>
+             </widget>
             </item>
             <item row="3" column="2">
-             <widget class="QSpinBox" name="greenMaxValue"/>
+             <widget class="QSpinBox" name="greenMaxValue">
+              <property name="maximum">
+               <number>255</number>
+              </property>
+             </widget>
             </item>
             <item row="4" column="0">
              <widget class="QLabel" name="label_11">
@@ -138,10 +154,18 @@
              </widget>
             </item>
             <item row="4" column="1">
-             <widget class="QSpinBox" name="blueMinValue"/>
+             <widget class="QSpinBox" name="blueMinValue">
+              <property name="maximum">
+               <number>255</number>
+              </property>
+             </widget>
             </item>
             <item row="4" column="2">
-             <widget class="QSpinBox" name="blueMaxValue"/>
+             <widget class="QSpinBox" name="blueMaxValue">
+              <property name="maximum">
+               <number>255</number>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -181,10 +205,18 @@
              </widget>
             </item>
             <item row="2" column="0">
-             <widget class="QSpinBox" name="equalizationMinValue"/>
+             <widget class="QSpinBox" name="equalizationMinValue">
+              <property name="maximum">
+               <number>255</number>
+              </property>
+             </widget>
             </item>
             <item row="2" column="1">
-             <widget class="QSpinBox" name="equalizationMaxValue"/>
+             <widget class="QSpinBox" name="equalizationMaxValue">
+              <property name="maximum">
+               <number>255</number>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -277,7 +309,14 @@
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QSpinBox" name="saltpeperPercentageValue"/>
+             <widget class="QSpinBox" name="saltpeperPercentageValue">
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -335,13 +374,6 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QPushButton" name="saveButton">
-            <property name="text">
-             <string>Enregistrer</string>
-            </property>
-           </widget>
-          </item>
-          <item>
            <spacer name="horizontalSpacer_2">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -353,6 +385,13 @@
              </size>
             </property>
            </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="saveButton">
+            <property name="text">
+             <string>Enregistrer</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>

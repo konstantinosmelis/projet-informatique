@@ -1,7 +1,7 @@
 #include "Image.h"
 
 #include <cstdlib>
-#include <experimental/random>
+#include <random>
 
 Image::Image() {
 }
@@ -59,10 +59,16 @@ void Image::save(const std::string &path) const {
     ImageDescriptor(path, _descriptor.getTitle(), _descriptor.getSource(), _descriptor.getAuthor(), "public", _descriptor.getWeight()).save(path + "_descriptor");
 }
 
-// pour les test
 void Image::show() const {
     cv::imshow(this->_descriptor.getTitle(), this->_image); // display the image using opencv
     cv::waitKey();
+}
+
+/**
+ * \param code a opencv color conversion code
+ */
+void Image::setColorModel(const cv::ColorConversionCodes code) {
+    cv::cvtColor(this->_image, this->_image, code);
 }
 
 /**
@@ -112,6 +118,10 @@ void Image::normalizeHistogram() {
     cv::merge(channels, this->_image);
 }
 
+/**
+ * \param min minimum imgae's dynamic value
+ * \param max maximum image's dynamic value
+ */
 void Image::equalizeHistogram(const int min, const int max) {
     std::vector<cv::Mat> channels;
     cv::split(this->_image, channels);
@@ -329,8 +339,7 @@ void Image::saltpepperNoise(const int percentage) {
     if (isgrayscale) {
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < cols; ++j) {
-                // Générer une valeur aléatoire entre 0 et 20
-                int random_value = std::experimental::randint(0, 100 / percentage);
+                int random_value = rand() % ((100 / percentage) + 1);
 
                 // Appliquer le bruit poivre et sel
                 if (random_value == 0) {
@@ -349,8 +358,7 @@ void Image::saltpepperNoise(const int percentage) {
         for(int c = 0; c < this->_image.channels(); ++c) {
             for(int i = 0; i < rows; ++i) {
                 for(int j = 0; j < cols; ++j) {
-                    // Générer une valeur aléatoire entre 0 et 20
-                    int random_value = std::experimental::randint(0, 100 / percentage);
+                    int random_value = rand() % ((100 / percentage) + 1);
 
                     // Appliquer le bruit poivre et sel à chaque canal
                     if (random_value == 0) {

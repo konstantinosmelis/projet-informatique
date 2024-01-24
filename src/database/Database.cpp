@@ -11,7 +11,7 @@ Database::Database() {
  * \param directoryName the path to thie directory containing the descriptor files
  */
 void Database::load(const std::string &directoryName) {
-    int number_of_images = 0;
+    int number_of_images = (int) this->_images.size();
     std::filesystem::directory_iterator direcotry;
     std::ifstream file;
     std::string path;
