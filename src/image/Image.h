@@ -58,6 +58,11 @@ class Image {
         void show() const;
 
         /**
+         * \brief Change the image's color model
+         */
+        void setColorModel(const cv::ColorConversionCodes code);
+
+        /**
          * \brief Create the histogram of each color channel
          */
         std::vector<std::vector<int>> histogram();

@@ -59,10 +59,16 @@ void Image::save(const std::string &path) const {
     ImageDescriptor(path, _descriptor.getTitle(), _descriptor.getSource(), _descriptor.getAuthor(), "public", _descriptor.getWeight()).save(path + "_descriptor");
 }
 
-// pour les test
 void Image::show() const {
     cv::imshow(this->_descriptor.getTitle(), this->_image); // display the image using opencv
     cv::waitKey();
+}
+
+/**
+ * \param code a opencv color conversion code
+ */
+void Image::setColorModel(const cv::ColorConversionCodes code) {
+    cv::cvtColor(this->_image, this->_image, code);
 }
 
 /**
@@ -112,6 +118,10 @@ void Image::normalizeHistogram() {
     cv::merge(channels, this->_image);
 }
 
+/**
+ * \param min minimum imgae's dynamic value
+ * \param max maximum image's dynamic value
+ */
 void Image::equalizeHistogram(const int min, const int max) {
     std::vector<cv::Mat> channels;
     cv::split(this->_image, channels);

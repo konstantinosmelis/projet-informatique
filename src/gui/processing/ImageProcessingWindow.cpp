@@ -57,6 +57,7 @@ void ImageProcessingWindow::dilationhandler() {
 
 void ImageProcessingWindow::borderEnhancementHandler() {
     this->_image.borderEnhancement();
+    this->_image.setColorModel(cv::COLOR_GRAY2BGR);
     this->displayImage();
 }
 
@@ -94,7 +95,7 @@ void ImageProcessingWindow::saveHandler() {
 
 void ImageProcessingWindow::displayImage() {
     // Display the modified image in the QLabel (assuming ui->imageLabelAfterProcessing is a QLabel)
-    QImage qimg((uchar*) this->_image.getImage().data, this->_image.getImage().cols, this->_image.getImage().rows, (this->_image.getImage().channels() == 1 ? QImage::Format_Grayscale16 : QImage::Format_BGR888));
+    QImage qimg((uchar*) this->_image.getImage().data, this->_image.getImage().cols, this->_image.getImage().rows, QImage::Format_BGR888);
     ui->imageAfterProcessing->setPixmap(QPixmap::fromImage(qimg));
     ui->imageAfterProcessing->setFixedSize(this->_image.getImage().cols, this->_image.getImage().rows);
 }
