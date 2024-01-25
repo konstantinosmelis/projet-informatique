@@ -26,9 +26,10 @@ void LoginWindow::loginHandler() {
     User user(ui->usernameText->text().toStdString(), ui->passwordText->text().toStdString());
     if(user.verifyLogin(this->_userPath) && !user.getUsername().empty()) {
         this->hide();
-        ListWindow *secondFenetre = new ListWindow(user);
-        this->connect(secondFenetre, SIGNAL(logout()), SLOT(logout()));
-        secondFenetre->show();
+        ListWindow *listWindow = new ListWindow(user);
+        listWindow->setAttribute(Qt::WA_DeleteOnClose);
+        this->connect(listWindow, SIGNAL(logout()), SLOT(logout()));
+        listWindow->show();
         ui->usernameText->clear();
         ui->passwordText->clear();
         ui->failedToConnectText->setText("");

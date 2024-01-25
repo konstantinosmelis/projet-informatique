@@ -60,12 +60,14 @@ void ListWindow::selectDatabaseHandler() {
 
 void ListWindow::addImageHandler() {
     DatabaseWindow *databaseWindow = new DatabaseWindow(this->_database);
+    databaseWindow->setAttribute(Qt::WA_DeleteOnClose);
     this->connect(databaseWindow, SIGNAL(imageAdded()), SLOT(loadTable()));
     databaseWindow->show();
 }
 
 void ListWindow::imageProcessingHandler() {
     ImageProcessingWindow *imageProcessingWindow = new ImageProcessingWindow(this->_database.getImageById(this->_imageId));
+    imageProcessingWindow->setAttribute(Qt::WA_DeleteOnClose);
     imageProcessingWindow->show();
 }
 

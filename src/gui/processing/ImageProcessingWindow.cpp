@@ -11,7 +11,7 @@ ImageProcessingWindow::ImageProcessingWindow(const Image image, QWidget *parent)
 {
     this->_image = image;
     ui->setupUi(this);
-    ui->imageBeforeProcessing->setPixmap(QPixmap(QString::fromStdString(this->_image.getImageDescriptor().getPath())));
+    ui->imageBeforeProcessing->setPixmap(QPixmap(QString::fromStdString(this->_image.getImageDescriptor().getPath())).scaledToWidth(ui->imageBeforeProcessing->width()));
 
     this->connect(ui->histogramButton, &QPushButton::clicked, this, [=]() { this->histogramHandler(); });
     this->connect(ui->normalisationButton, &QPushButton::clicked, this, [=]() { this->normalisationHandler(); });
@@ -83,7 +83,7 @@ void ImageProcessingWindow::gaussianNoiseHandler() {
 
 void ImageProcessingWindow::returnHandler() {
     this->_image = Image();
-    this->destroy();
+    this->destroy(this);
 }
 
 void ImageProcessingWindow::saveHandler() {
@@ -96,6 +96,5 @@ void ImageProcessingWindow::saveHandler() {
 void ImageProcessingWindow::displayImage() {
     // Display the modified image in the QLabel (assuming ui->imageLabelAfterProcessing is a QLabel)
     QImage qimg((uchar*) this->_image.getImage().data, this->_image.getImage().cols, this->_image.getImage().rows, QImage::Format_BGR888);
-    ui->imageAfterProcessing->setPixmap(QPixmap::fromImage(qimg));
-    ui->imageAfterProcessing->setFixedSize(this->_image.getImage().cols, this->_image.getImage().rows);
+    ui->imageAfterProcessing->setPixmap(QPixmap::fromImage(qimg).scaledToWidth(ui->imageAfterProcessing->width()));
 }
