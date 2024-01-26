@@ -19,7 +19,6 @@ DatabaseWindow::DatabaseWindow(Database &database, QWidget *parent)
 
 DatabaseWindow::~DatabaseWindow() {
     delete ui;
-    delete _database;
 }
 
 void DatabaseWindow::imageLoadingHandler() {
@@ -31,10 +30,11 @@ void DatabaseWindow::imageLoadingHandler() {
 }
 
 void DatabaseWindow::imageAddedHandler() {
-    if(!(this->_imagePath.isEmpty() || ui->imageNameText->toPlainText().isEmpty() || ui->imageSourceText->toPlainText().isEmpty() || ui->imageSourceText->toPlainText().isEmpty() || ui->accessLevelText->toPlainText().isEmpty() || ui->imageCostText->toPlainText().isEmpty())) {
-        this->_database->addImage(Image(ImageDescriptor((int) this->_database->getImages().size() + 1, this->_imagePath.toStdString(), ui->imageNameText->toPlainText().toStdString(),
-                                        ui->imageSourceText->toPlainText().toStdString(), ui->imageAuthorText->toPlainText().toStdString(),
-                                        ui->accessLevelText->toPlainText().toStdString(), std::stoi(ui->imageCostText->toPlainText().toStdString()))));
+    if(!(ui->imagePathText->text().isEmpty() || ui->imageNameText->text().isEmpty() || ui->imageSourceText->text().isEmpty() || ui->imageAuthorText->text().isEmpty() || ui->accessLevelText->currentText().isEmpty() || ui->imageCostText->text().isEmpty())) {
+        this->_database->addImage(Image(ImageDescriptor((int) this->_database->getImages().size() + 1, ui->imagePathText->text().toStdString(), ui->imageNameText->text().toStdString(),
+                                        ui->imageSourceText->text().toStdString(), ui->imageAuthorText->text().toStdString(),
+                                        ui->accessLevelText->currentText().toStdString(), std::stoi(ui->imageCostText->text().toStdString()))));
+
         emit imageAdded();
         this->close();
     }

@@ -1,201 +1,237 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>DatabaseWindow</class>
- <widget class="QMainWindow" name="databaseWindow">
+ <widget class="QMainWindow" name="DatabaseWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1166</width>
+    <height>609</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Ajout dans la base de données</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>40</y>
-      <width>401</width>
-      <height>421</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Informations de l'image</string>
-    </property>
-    <widget class="QWidget" name="gridLayoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>60</y>
-       <width>341</width>
-       <height>281</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="horizontalSpacing">
-       <number>10</number>
-      </property>
-      <property name="verticalSpacing">
-       <number>30</number>
-      </property>
-      <item row="0" column="0">
-       <widget class="QLabel" name="imageNameLabel">
-        <property name="text">
-         <string>Nom de l'image</string>
-        </property>
-       </widget>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <layout class="QVBoxLayout" name="leftGroup">
+        <item>
+         <widget class="QGroupBox" name="selectorGroup">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="title">
+           <string>Image</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <widget class="QGroupBox" name="imageGroup">
+             <property name="title">
+              <string>Charger une image</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_4">
+              <item row="0" column="0">
+               <widget class="QLineEdit" name="imagePathText">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QPushButton" name="loadImageButton">
+                <property name="text">
+                 <string>Choisir un fichier</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="imagePreview">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">Image...</string>
+             </property>
+             <property name="text">
+              <string>No image yet</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="cancelGroup" stretch="0,0">
+          <property name="leftMargin">
+           <number>5</number>
+          </property>
+          <property name="topMargin">
+           <number>20</number>
+          </property>
+          <property name="rightMargin">
+           <number>5</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="returnButton">
+            <property name="text">
+             <string>Annuler</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </item>
-      <item row="0" column="1">
-       <widget class="QTextEdit" name="imageNameText"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="imageSourceLabel">
-        <property name="text">
-         <string>Source</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QTextEdit" name="imageSourceText"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="imageAuthorLabel">
-        <property name="text">
-         <string>Auteur</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QTextEdit" name="imageAuthorText"/>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="accessLevelLabel">
-        <property name="text">
-         <string>Niveau d'accès</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QTextEdit" name="accessLevelText"/>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="imageCostLabel">
-        <property name="text">
-         <string>Coût de l'image </string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QTextEdit" name="imageCostText"/>
+      <item>
+       <layout class="QVBoxLayout" name="rightGroup">
+        <item>
+         <widget class="QGroupBox" name="informationGroup">
+          <property name="title">
+           <string>Informations sur l'image</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="0" column="0">
+            <widget class="QLabel" name="imageNameLabel">
+             <property name="text">
+              <string>Nom de l'image</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="imageNameText"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="imageSourceLabel">
+             <property name="text">
+              <string>Source</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="imageSourceText"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="imageAuthorLabel">
+             <property name="text">
+              <string>Auteur</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="imageAuthorText"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="accessLevelLabel">
+             <property name="text">
+              <string>Niveau d'accès</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QComboBox" name="accessLevelText">
+             <item>
+              <property name="text">
+               <string>public</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>private</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="imageCostLabel">
+             <property name="text">
+              <string>Coût de l'image </string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLineEdit" name="imageCostText"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="confirmGroup">
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="finishButton">
+            <property name="text">
+             <string>Terminer</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </item>
      </layout>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="imageGroup">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>40</y>
-      <width>311</width>
-      <height>131</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Charger l'image</string>
-    </property>
-    <widget class="QPushButton" name="loadImageButton">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>90</y>
-       <width>121</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Charger</string>
-     </property>
-    </widget>
-    <widget class="QTextEdit" name="imagePathText">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>281</width>
-       <height>31</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QPushButton" name="returnButton">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>480</y>
-      <width>93</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Annuler</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="finishButton">
-    <property name="geometry">
-     <rect>
-      <x>620</x>
-      <y>480</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Terminer</string>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="groupBox_2">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>180</y>
-      <width>311</width>
-      <height>281</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string/>
-    </property>
-    <widget class="QLabel" name="imagePreview">
-     <property name="geometry">
-      <rect>
-       <x>8</x>
-       <y>15</y>
-       <width>291</width>
-       <height>251</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>No image yet</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1166</width>
      <height>23</height>
     </rect>
    </property>
