@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>LoginWindow</class>
- <widget class="QMainWindow" name="loginWindow">
+ <widget class="QMainWindow" name="LoginWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>680</width>
+    <width>813</width>
     <height>479</height>
    </rect>
   </property>
@@ -224,7 +224,7 @@ border-radius:10px;</string>
 margin: 30px;</string>
         </property>
         <property name="text">
-         <string>Log In</string>
+         <string>Connexion</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -327,7 +327,7 @@ QPushButton#pushButton_2:hover {
 </string>
           </property>
           <property name="text">
-           <string>L o g  I n</string>
+           <string>Se connecter</string>
           </property>
           <property name="autoDefault">
            <bool>false</bool>
@@ -366,7 +366,7 @@ QPushButton#pushButton_2:hover {
          </string>
         </property>
         <property name="text">
-         <string> </string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
