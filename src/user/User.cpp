@@ -62,12 +62,13 @@ bool User::verifyLogin(const std::string &path) {
     std::ifstream file;
     std::string userPath = path + this->_username;
     std::string password;
+
     // Check if the users file exists
     if(std::filesystem::exists(userPath)) {
         // If the file exists te users can login with the correct password
         file.open(userPath);
         file >> password;
-        file >> this->_isAdmin; // Check if the users is an admin
+        file >> std::boolalpha >>this->_isAdmin; // Check if the users is an admin
         file.close();
         return this->_password == password; // If passwords match the users can login
     }

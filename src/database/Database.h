@@ -39,6 +39,9 @@ class Database {
          * \brief Add new images in the database
          */
         void addImage(const Image &);
+
+        // delete image by id means remove image from the vector using id
+        void deleteImageById(const int);
 };
 
 std::ostream &operator<<(std::ostream &, const Database &);

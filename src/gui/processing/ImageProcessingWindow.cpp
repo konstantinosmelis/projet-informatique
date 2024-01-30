@@ -1,7 +1,6 @@
 #include "ImageProcessingWindow.h"
 
 #include "../../../ui/ui_imageprocessingwindow.h"
-
 #include <QPushButton>
 #include <QFileDialog>
 

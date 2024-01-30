@@ -3,6 +3,7 @@
 #include <filesystem>
 #include <fstream>
 #include <vector>
+#include <QDebug>
 
 Database::Database() {
 }
@@ -32,9 +33,9 @@ void Database::load(const std::string &directoryName) {
         while(std::getline(file, line)) {
             lines.push_back(line);
         }
-        this->addImage(Image(ImageDescriptor(++number_of_images, lines[0], lines[1], lines[2], lines[3], lines[4], std::stoi(lines[5]))));
-
+        this->addImage(Image(ImageDescriptor(++number_of_images, lines[0], lines[1], lines[2], lines[3], lines[4], std::stoi(lines[5]), path)));
         file.close();
+
     }
 }
 
@@ -80,3 +81,11 @@ std::ostream &operator<<(std::ostream &stream, const Database &database) {
     }
     return stream;
 }
+void Database::deleteImageById(const int id) {
+    auto it = std::remove_if(_images.begin(), _images.end(), [id](const Image& img) {
+        return img.getImageDescriptor().getId() == id;
+    });
+
+    _images.erase(it, _images.end());
+}
+

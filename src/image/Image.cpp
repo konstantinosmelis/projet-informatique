@@ -434,3 +434,8 @@ void Image::detectLines(const int threshold, const int minLineLength, const int 
         cv::line(this->_image, cv::Point(line[0], line[1]), cv::Point(line[2], line[3]), cv::Scalar(0, 0, 255), 2); 
     }
 }
+
+
+Image::~Image(){
+
+}

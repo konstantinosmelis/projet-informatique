@@ -27,6 +27,7 @@ class ListWindow : public QMainWindow {
         void imageProcessingHandler();
         void imageDisplayHandler(const int);
         void exitHandler();
+        void deleteHandler();
 
     private:
         Ui::ListWindow *ui;

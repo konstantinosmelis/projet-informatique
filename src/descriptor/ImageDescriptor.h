@@ -8,12 +8,14 @@ class ImageDescriptor {
     private:
     int _id, _weight;
     std::string _path, _title, _source, _author, _access;
+    std::string _descriptorPath;//to handle delete and update functions directly inside the file.
 
     public:
         // Constructors
         ImageDescriptor();
         ImageDescriptor(const int, const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, const int);
         ImageDescriptor(const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, const int);
+        ImageDescriptor(const int ,const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, const int, const std::string &);
 
         // Getters
         int getId() const;
@@ -23,6 +25,7 @@ class ImageDescriptor {
         std::string getAuthor() const;
         std::string getAccessLevel() const;
         int getWeight() const;
+        std::string getDescriptorPath() const;
 
         // Settters
         void setId(const int);
@@ -33,6 +36,8 @@ class ImageDescriptor {
         void setAccessLevel(const std::string &);
         void setWeight(const int);
         void save(const std::string&) const;
+
+        void setDescriptorPath(const std::string &);
 };
 
 std::ostream &operator<<(std::ostream &, const ImageDescriptor &);

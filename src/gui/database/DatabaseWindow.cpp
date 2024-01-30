@@ -1,6 +1,5 @@
 #include "DatabaseWindow.h"
 #include "../../../ui/ui_databasewindow.h"
-
 #include "../list/ListWindow.h"
 
 #include <QFileDialog>

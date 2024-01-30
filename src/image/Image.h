@@ -131,6 +131,9 @@ class Image {
          * \brief Detect lines into the image
          */
         void detectLines(const int, const int, const int);
+
+        // add a destructor
+        ~Image();
 };
 
 #endif //IMAGE_H
