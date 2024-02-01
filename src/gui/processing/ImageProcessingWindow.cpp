@@ -4,6 +4,8 @@
 #include <QPushButton>
 #include <QFileDialog>
 
+
+
 ImageProcessingWindow::ImageProcessingWindow(const Image image, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::ImageProcessingWindow)
@@ -97,3 +99,4 @@ void ImageProcessingWindow::displayImage() {
     QImage qimg((uchar*) this->_image.getImage().data, this->_image.getImage().cols, this->_image.getImage().rows, QImage::Format_BGR888);
     ui->imageAfterProcessing->setPixmap(QPixmap::fromImage(qimg).scaledToWidth(ui->imageAfterProcessing->width()));
 }
+

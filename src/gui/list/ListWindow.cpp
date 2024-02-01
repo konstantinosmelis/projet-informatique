@@ -19,6 +19,7 @@ ListWindow::ListWindow(const User &user, QWidget *parent)
     if(!this->_user.isAdmin()) {
         ui->addImageButton->setEnabled(false);
         ui->imageProcessingButton->setEnabled(false);
+        ui->deleteButton->setEnabled(false);
     }
 
     this->connect(ui->selectDatabaseButton, &QPushButton::clicked, this, [=]() { this->selectDatabaseHandler(); });
@@ -56,8 +57,13 @@ void ListWindow::selectDatabaseHandler() {
     QString databasePath = databaseDialog.getExistingDirectory(this, tr("Choisir un dossier"), "/home/");
     if(databasePath.isEmpty())
         return;
-    this->_database.load(databasePath.toStdString());
-    this->loadTable();
+    try{
+        this->_database.load(databasePath.toStdString());
+        this->loadTable();
+    }catch(std::exception &e) {
+        QMessageBox::critical(this, tr("Erreur"), tr("Erreur de chargement de la base de données."), QMessageBox::Ok);
+        std::cerr << e.what() << std::endl;
+    }
 }
 
 void ListWindow::addImageHandler() {
@@ -102,7 +108,7 @@ void ListWindow::deleteHandler(){
     msgBox.setDefaultButton(QMessageBox::No);
     if(msgBox.exec() == QMessageBox::Yes) {
         try {
-            // file.remove(); // delete the descriptor file in the directory
+            file.remove(); // delete the descriptor file in the directory
             this->_database.deleteImageById(this->_imageId); //remove alse the current image to the database
             ui->image->setText("Cliquer sur la liste pour afficher l'image");
             loadTable(); // then, load the database in the Qtable
@@ -111,3 +117,5 @@ void ListWindow::deleteHandler(){
         }
     }
 }
+
+

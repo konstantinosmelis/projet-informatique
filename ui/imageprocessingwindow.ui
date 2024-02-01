@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1500</width>
-    <height>500</height>
+    <height>504</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -179,10 +179,18 @@
              </widget>
             </item>
             <item row="4" column="1">
-             <widget class="QSpinBox" name="blueMinValue"/>
+             <widget class="QSpinBox" name="blueMinValue">
+              <property name="maximum">
+               <number>255</number>
+              </property>
+             </widget>
             </item>
             <item row="4" column="2">
-             <widget class="QSpinBox" name="blueMaxValue"/>
+             <widget class="QSpinBox" name="blueMaxValue">
+              <property name="maximum">
+               <number>255</number>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -329,7 +337,14 @@
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QSpinBox" name="saltpeperPercentageValue"/>
+             <widget class="QSpinBox" name="saltpeperPercentageValue">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -388,6 +403,13 @@
        </spacer>
       </item>
       <item>
+       <widget class="QPushButton" name="eraseProcessingButton">
+        <property name="text">
+         <string>Effacer les modifications</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -417,7 +439,7 @@
      <x>0</x>
      <y>0</y>
      <width>1500</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
