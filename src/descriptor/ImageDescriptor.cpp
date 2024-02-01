@@ -45,9 +45,7 @@ ImageDescriptor::ImageDescriptor(const std::string &path, const std::string &tit
     this->_weight = weight;
 }
 
-
-
-ImageDescriptor::ImageDescriptor(const int id,const std::string &path, const std::string &title, const std::string &source, const std::string &author, const std::string &access, const int weight, const std::string & descriptorPath) {
+ImageDescriptor::ImageDescriptor(const int id, const std::string &path, const std::string &title, const std::string &source, const std::string &author, const std::string &access, const int weight, const std::string &descriptorPath) {
     this->_id = id;
     this->_path = path;
     this->_title = title;
@@ -57,7 +55,6 @@ ImageDescriptor::ImageDescriptor(const int id,const std::string &path, const std
     this->_weight = weight;
     this->_descriptorPath = descriptorPath;
 }
-
 
 int ImageDescriptor::getId() const {
     return this->_id;
@@ -85,6 +82,10 @@ std::string ImageDescriptor::getAccessLevel() const {
 
 int ImageDescriptor::getWeight() const {
     return this->_weight;
+}
+
+std::string ImageDescriptor::getDescriptorPath() const {
+    return this->_descriptorPath;
 }
 
 /**
@@ -137,6 +138,13 @@ void ImageDescriptor::setWeight(const int weight) {
 }
 
 /**
+ * \param path the path to the descriptor file
+ */
+void ImageDescriptor::setDescriptorPath(const std::string & path){
+    this->_descriptorPath = path;
+}
+
+/**
  * \param path the path to where the image will be saved
  */
 void ImageDescriptor::save(const std::string& path) const {
@@ -154,13 +162,4 @@ void ImageDescriptor::save(const std::string& path) const {
 std::ostream &operator<<(std::ostream &stream, const ImageDescriptor &descriptor) {
     stream << descriptor.getId() << ": " << descriptor.getTitle() << ", " << descriptor.getPath() << ", " << descriptor.getSource() << ", " << descriptor.getWeight();
     return stream;
-}
-
-
-std::string ImageDescriptor::getDescriptorPath() const {
-    return this->_descriptorPath;
-}
-
-void ImageDescriptor::setDescriptorPath(const std::string & path){
-    this->_descriptorPath = path;
 }

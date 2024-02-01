@@ -35,7 +35,6 @@ void Database::load(const std::string &directoryName) {
         }
         this->addImage(Image(ImageDescriptor(++number_of_images, lines[0], lines[1], lines[2], lines[3], lines[4], std::stoi(lines[5]), path)));
         file.close();
-
     }
 }
 

@@ -1,5 +1,6 @@
 #include "ListWindow.h"
 #include "../../../ui/ui_listwindow.h"
+
 #include "../database/DatabaseWindow.h"
 #include "../processing/ImageProcessingWindow.h"
 
@@ -25,7 +26,7 @@ ListWindow::ListWindow(const User &user, QWidget *parent)
     this->connect(ui->imageProcessingButton, &QPushButton::clicked,this, [=]() { this->imageProcessingHandler(); });
     this->connect(ui->exitButton, &QPushButton::clicked,this, [=]() { this->exitHandler(); });
     this->connect(ui->databaseTable, &QTableWidget::cellClicked, this, [=](const int row) { this->imageDisplayHandler(row); });
-    this->connect(ui->deleteButton,&QPushButton::clicked,this,[=](){this->deleteHandler();});
+    this->connect(ui->deleteButton, &QPushButton::clicked, this, [=](){ this->deleteHandler(); });
 }
 
 ListWindow::~ListWindow() {
@@ -95,21 +96,18 @@ void ListWindow::deleteHandler(){
 
     QMessageBox msgBox;
      msgBox.setIcon(QMessageBox::Critical);
-    msgBox.setWindowTitle("Êtes-vous sur de vouloir supprimer?");
-    msgBox.setInformativeText("La suppression d'image dans la bibliothèque est irréversible. Etes vous sûr de vouloir supprimer?");
+    msgBox.setWindowTitle("Êtes-vous sur de vouloir supprimer ?");
+    msgBox.setInformativeText("La suppression d'image dans la bibliothèque est irréversible. Êtes vous sûr de vouloir supprimer ?");
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
     msgBox.setDefaultButton(QMessageBox::No);
     if(msgBox.exec() == QMessageBox::Yes) {
-        try{
-            file.remove();// delete the descriptor file in the directory
+        try {
+            // file.remove(); // delete the descriptor file in the directory
             this->_database.deleteImageById(this->_imageId); //remove alse the current image to the database
             ui->image->setText("Cliquer sur la liste pour afficher l'image");
             loadTable(); // then, load the database in the Qtable
-        }catch(std::exception &e){
-            qDebug() << e.what();
+        } catch(std::exception &e) {
+            std::cerr << e.what() << std::endl;
         }
-
-
     }
-
 }
